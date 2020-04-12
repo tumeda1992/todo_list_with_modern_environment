@@ -1,0 +1,27 @@
+# アプリケーション環境の最低限のコンテナ化(20200412~)
+- 開発PCがDocker環境ではないアプリも作っているPCだから、Dockerで入れるrubyのイメージも古いものを入れる必要ある
+  - 対応案
+    - rbenvをフル活用
+    - docker化するまでは古いイメージを使って、やりたいバージョンに変える
+- [Dockerfileの記法](http://docs.docker.jp/engine/reference/builder.html)
+  - コマンド実行
+    - [RUNとCMDとENTRYPOINT](https://shinkufencer.hateblo.jp/entry/2019/01/28/225553)について
+      - Dockerfileはコンテナ作成ではなくイメージ作成のためのファイル
+      - イメージ作成時のことを考えるならRUNだけを使う
+      - コンテナを作る時用にCMDとENTRYPOINTがある
+      - CMDはコンテナ作成時の強制上書きコマンド
+  - `WORKDIR /path/to/dir`はコマンド実行設定
+  - 変数定義
+    - ENVは環境変数、ARGは構築中に使う変数
+    - [ARGは文字通り引数で値を指定](https://techblog.recochoku.jp/1979) `docker build -f ./Dockerfile --build-arg MES="Hello" .`
+  - Docker実行側のPCとのファイル・ディレクトリ連携 ADD, COPY, VOLUME
+    - `VOLUME /path/to/dir`
+    - [コピーのADDとCOPY](https://qiita.com/YumaInaura/items/1647e509f83462a37494)
+- docker-composeコマンド使いたい
+  - 1イメージの場合不要だけど、`docker run`コマンドにいろんな引数つけるの面倒。
+  - 固定した環境でコンテナ起動したいからdocker-composeコマンドを使う
+  - 当たり前だけどごっちゃにしてたこと。Dockerfileはイメージ作成、.docker-compose.ymlはコンテナ作成のためのファイル、entrypointファイルはコンテナ作成時にアプリケーション起動するファイル。
+  - 使いたいオプションは以下連携
+    - ポート
+    - プロジェクトディレクトリ
+      - rubyイメージを取るとrailsにbundler2以上を求められ、それを前提にGemfile.lockが作られているが、イメージではbundler1.17.1入れていて上書きできなくて、デフォルトのGemfile.lockじゃ対処できないからどうしようかな。
