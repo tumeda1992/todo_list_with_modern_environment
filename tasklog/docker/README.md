@@ -28,11 +28,20 @@
   - Docker実行側のPCとのファイル・ディレクトリ連携 ADD, COPY, VOLUME
     - `VOLUME /path/to/dir`
     - [コピーのADDとCOPY](https://qiita.com/YumaInaura/items/1647e509f83462a37494)
+- [ベストプラクティス](https://qiita.com/enta0701/items/b872eef6d910908c0e6c)
+  - `docker exec -it`
+    - `-i`：コンテナ内の標準出力とホスト側の出力をつなげる
+    - `-t`：ホスト側の入力をコンテナの標準出力につなげる
 - docker-composeコマンド使いたい
   - 1イメージの場合不要だけど、`docker run`コマンドにいろんな引数つけるの面倒。
   - 固定した環境でコンテナ起動したいからdocker-composeコマンドを使う
   - 当たり前だけどごっちゃにしてたこと。Dockerfileはイメージ作成、.docker-compose.ymlはコンテナ作成のためのファイル、entrypointファイルはコンテナ作成時にアプリケーション起動するファイル。
+  - ↑この定義は間違ってないけど、docker-compose.ymlでDockerfile自体も指定してbuildもやってくれる模様
   - 使いたいオプションは以下連携
     - ポート
     - プロジェクトディレクトリ
       - rubyイメージを取るとrailsにbundler2以上を求められ、それを前提にGemfile.lockが作られているが、イメージではbundler1.17.1入れていて上書きできなくて、デフォルトのGemfile.lockじゃ対処できないからどうしようかな。
+- ホスト側から3000ポート（または3001ポート）にアクセスできないorz
+  - docker-compose.ymlのportsで3000:3000を指定しているにも関わらず
+  - そもそも開く設定を明示的にしなきゃいけないのかと思い、DockerfileでEXPOSEコマンドで開けてみたけど効果なし
+  - `rails s -p $port -b "0.0.0.0"`と-bをつけたらなんかうまくいった！

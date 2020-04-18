@@ -12,12 +12,22 @@ ENV LANG C.UTF-8
 
 # アプリケーション用のインフラ設定
 ARG appname=todo_list_application
+ARG apppath="/root/$appname"
 
-# TODO docker-composeでコンテナ作成時のマウント設定をすることで以下コードを代替
-RUN cd /root \
-  && mkdir $appname \
-  && cd $appname
-WORKDIR /root/$appname
-COPY ./ .
+# https://qiita.com/enta0701/items/b872eef6d910908c0e6c#7-%E4%B8%8D%E8%A6%81%E3%81%AA%E5%91%BD%E4%BB%A4%E3%81%AF%E6%B8%9B%E3%82%89%E3%81%99
+#RUN cd /root \
+#  && mkdir $appname \
+#  && cd $apppath
+WORKDIR $apppath
+
+# docker-composeでコンテナ作成時のマウント設定をすることで以下コードを代替
+# COPY ./ .
+
+ADD Gemfile $apppath/Gemfile
+RUN bundle install
+
+# EXPOSEコマンドはこのポートを開けるという宣言で何かするというわけではないので不要
+# ARG port="3001"
+# EXPOSE $port
 
 CMD [ "./entrypoint.sh" ]

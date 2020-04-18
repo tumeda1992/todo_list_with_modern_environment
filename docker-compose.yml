@@ -1,0 +1,10 @@
+version: '3'
+services:
+  todo_app_api:
+    container_name: todo_app_api
+    build: ./todo_list_application
+    command: "/root/todo_list_application/entrypoint.sh"
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./todo_list_application:/root/todo_list_application
