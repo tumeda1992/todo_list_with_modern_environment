@@ -128,7 +128,7 @@
 
 ### トップレベルのTODO
 - [x] Railsで最低限のHelloWorldアプリケーション環境を構築
-- [ ] アプリケーション環境の最低限のコンテナ化
+- [x] アプリケーション環境の最低限のコンテナ化
    - 今後の設定を書くにもDockerfileに書くことを強制し、Infrastracture as a codeを実現
 - [ ] 最低限のReactNativeWebによりフロントとバックを分ける
 - [ ] 最低限GraphQLの設定をしてフロントとバックの接合をさせる
