@@ -1,6 +1,9 @@
 # このプロジェクトの目的
 最新アプリ環境の実験場。ドメイン知識と技術環境の両方を実験するとスピードが遅いため、サービス内容を最小限に環境だけに特化して実験するリポジトリ
 
+ビジネス面に直接関係ない技術自体の勉強は下記ディレクトリで調査
+https://github.com/setsumaru1992/internal_application_study_reports
+
 
 # 20200412構想
 思いの外長くなったので、
@@ -138,7 +141,7 @@
 - [x] Railsで最低限のHelloWorldアプリケーション環境を構築
 - [x] アプリケーション環境の最低限のコンテナ化
    - 今後の設定を書くにもDockerfileに書くことを強制し、Infrastracture as a codeを実現
-- [ ] 最低限のReactNativeWebによりフロントとバックを分ける
+- [ ] 最低限の~~ReactNativeWeb~~ React実装によりフロントとバックを分ける
 - [ ] 最低限GraphQLの設定をしてフロントとバックの接合をさせる
 - [ ] 必要に応じて以下を設定
   - [ ] unicorn
@@ -152,7 +155,6 @@
   - [ ] 複数サービス運用をやってみる
   - [ ] k8sやってみる
   - [ ] 無理ならdocker-compose
-- [ ] ReactNativeWebで遊ぶ
 
 ### TODOごとの記録
 `tasklog`ディレクトリに記載
