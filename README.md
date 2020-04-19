@@ -65,6 +65,7 @@ https://github.com/setsumaru1992/internal_application_study_reports
       - クライアントサイドのデータ管理をまるっとライブラリに委託できる。
   - 具体的に何をしたいのか
     - 表題ママ
+    - ついでにWeb+DBPRESSvol108のOpenAPIを使ったスキーマ駆動設計もできるとなおよし
 - unicornで立ち上げたい
   - できるようになることで実現できること
     - 抱えている問題
@@ -130,6 +131,10 @@ https://github.com/setsumaru1992/internal_application_study_reports
   - 具体的に何をしたいのか
     - 表題ママ
 
+#### そんな問題意識ないけど興味ある技術集
+- next.js
+- node.js
+  - node前提のことが多いから。エントリーポイントとかくらい知っておきたい。ライブラリの起点とかも
 
 
 ## 必要なこと（手をつける順）
@@ -144,12 +149,14 @@ https://github.com/setsumaru1992/internal_application_study_reports
 - [ ] 最低限の~~ReactNativeWeb~~ React実装によりフロントとバックを分ける
 - [ ] 最低限GraphQLの設定をしてフロントとバックの接合をさせる
 - [ ] 必要に応じて以下を設定
+  - [ ] OpenAPIを使用したスキーマ駆動設計
   - [ ] unicorn
   - [ ] dcron
   - [ ] TypeScript
   - [ ] circleCI
   - [ ] Railsの本番環境設定
   - [ ] webpack込みのrails6を入れられるdocker構成作成
+  - [ ] next.js
 - [ ] コンテナ環境で遊ぶ
   - [ ] (準備)無駄なマイクロサービスを作り、複数サービス稼働状態を作る
   - [ ] 複数サービス運用をやってみる

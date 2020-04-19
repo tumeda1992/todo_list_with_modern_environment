@@ -23,7 +23,8 @@ WORKDIR $apppath
 # docker-composeでコンテナ作成時のマウント設定をすることで以下コードを代替
 # COPY ./ .
 
-ADD Gemfile $apppath/Gemfile
+# 必要要件としてはGemfileだけだけど、勝手なバージョンアップの弊害も踏まえ、実際にインストールしたバージョンも固定しておきたいのでlockもコピー
+COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
 # EXPOSEコマンドはこのポートを開けるという宣言で何かするというわけではないので不要
