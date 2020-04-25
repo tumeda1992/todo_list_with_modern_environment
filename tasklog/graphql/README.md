@@ -12,4 +12,4 @@
 - ApolloClient
   - 最悪curlで事足りる
   - 強力なツールを使いたい場合に使う
-  - ApolloServer, ApolloClientともに思想を知りたいな
+  - ApolloServer, ApolloClientともに思想を知りたいな→Apolloで有名なのはClientっぽい。Server側もあるかもだけど。
