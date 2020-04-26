@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 yarn install
-yarn build
+# yarn build
 yarn start
 
-tail -f package.json
+# 不本意だけど、起動後に以下のコードを打っている
+# docker-compose run  --service-ports todo_app_view yarn start

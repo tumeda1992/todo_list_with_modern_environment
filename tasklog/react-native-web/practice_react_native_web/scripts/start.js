@@ -42,7 +42,7 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 
 // Tools like Cloud9 rely on this.
 // 遊び用ポート。3000ポート周辺の競合を気にしないように作成日(20200418)+接頭辞3
-const port = 30418;
+const port = 30417;
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || port;
 const HOST = process.env.HOST || '0.0.0.0';
 

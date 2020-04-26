@@ -157,8 +157,8 @@ https://github.com/setsumaru1992/internal_application_study_reports
 - [x] Railsで最低限のHelloWorldアプリケーション環境を構築
 - [x] アプリケーション環境の最低限のコンテナ化
    - 今後の設定を書くにもDockerfileに書くことを強制し、Infrastracture as a codeを実現
-- [ ] 最低限の~~ReactNativeWeb~~ React実装によりフロントとバックを分ける
-- [ ] 最低限GraphQLの設定をしてフロントとバックの接合をさせる
+- [x] 最低限の~~ReactNativeWeb~~ React実装によりフロントとバックを分ける
+- [x] 最低限GraphQLの設定をしてフロントとバックの接合をさせる
 - [ ] 必要に応じて以下を設定
   - [ ] OpenAPIを使用したスキーマ駆動設計
   - [ ] unicorn

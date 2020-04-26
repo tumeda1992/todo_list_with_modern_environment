@@ -44,3 +44,6 @@
     - `Access to fetch at 'http://localhost:30426/graphql' from origin 'http://localhost:30425' has been`
     - [CORS](https://qiita.com/sugo/items/9c5f9cc5d88e6d7efa2d#rack-cors%E3%81%AE%E5%88%A9%E7%94%A8)の設定不足っていう基本的なこと
 - sampleアプリの失敗。これは動くことだけ分かればいいや。実際に失敗メモとかはこのリポジトリのアプリに書きたいからやりすぎちゃいけない
+  - sampleアプリでは起動だけしてdockerアプリに入れるか判断するくらい
+  - dockerアプリではビジネスロジックの関係ない技術オンリーなことを試す
+  - 実際のアプリでビジネスロジックと絡んだ技術実装を試す

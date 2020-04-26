@@ -3,6 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import ApolloClient, {gql} from 'apollo-boost';
+
+const client = new ApolloClient({ uri: 'http://localhost:30418/graphql'})
+const query = gql`
+{ 
+  testField
+}
+`
+
+client.query({query})
+  .then((data) => window.console.log('data', data))
+  .catch(console.error)
 
 ReactDOM.render(
   <React.StrictMode>
