@@ -31,5 +31,16 @@ module SampleGraphql
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    # https://qiita.com/guri3/items/268dc4f8be4bafe5029f
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins "http://localhost:30425"
+
+        resource "*",
+                headers: :any,
+                methods: [:get, :post, :put, :patch, :delete, :options, :head],
+                expose: ['Per-Page', 'Total', 'Link']
+      end
+    end
   end
 end
