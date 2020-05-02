@@ -160,15 +160,15 @@ https://github.com/setsumaru1992/internal_application_study_reports
 - [x] 最低限の~~ReactNativeWeb~~ React実装によりフロントとバックを分ける
 - [x] 最低限GraphQLの設定をしてフロントとバックの接合をさせる
 - [ ] 必要に応じて以下を設定
+  - [ ] next.js
+  - [ ] TypeScript
+  - [ ] node.jsでhelloWorldライブラリ作成
   - [ ] OpenAPIを使用したスキーマ駆動設計
   - [ ] unicorn
   - [ ] dcron
-  - [ ] TypeScript
   - [ ] circleCI
   - [ ] Railsの本番環境設定
   - [ ] webpack込みのrails6を入れられるdocker構成作成
-  - [ ] next.js
-  - [ ] node.jsでhelloWorldライブラリ作成
   - [ ] websocketで簡単実装
 - [ ] コンテナ環境で遊ぶ
   - [ ] (準備)無駄なマイクロサービスを作り、複数サービス稼働状態を作る
