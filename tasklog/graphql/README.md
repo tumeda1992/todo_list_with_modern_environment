@@ -66,12 +66,108 @@
     - Mutationで変えるのはどこかのクエリタイプに定義されたものだから、Queryしているものと共通のものを使うということで、自由といえどもMutation側は参照識別子を使ってるっぽい感じだけど
   - どうしようか
     - 取りうる方法
-      - A. 関心のトップにQueryタグとGraphQLクエリを用意し、それらに関連することはその配下でのみいじる
-      - B. QueryとMutationはお互い気にせず存在していい。
+      - A. QueryとMutationはお互い気にせず存在していい。
         - ただMutation側はQueryで使っているものを参照識別子的に使うことになる。
         - となるとQueryの扱いは`app/models`のようにデータの集合がたくさんある運用になるのか？
         - ただそうするとRESTと同じ過小のクエリが増えるからいやだ。
+      - B. 関心のトップにQueryタグとGraphQLクエリを用意し、それらに関連することはその配下でのみいじる
+        - AほどじゃないけどGraphQLのよさはあまり活かせないかもしれない。コンポーネントべったりなエンドポイント設計になるから。
+          - まぁそうだとしてもapollo使うだけでreduxがかなりすっきりするし、コンポーネントべったりといえどもRESTやRPCだと1コンポーネントでも複数エンドポイント貼るからそれが減るだけでも嬉しい。
     - 上記の判断により組むべきディレクトリ構成が変わる。Githubのいろんなのを見てみたい
-    - Bは問題含みっぽいからAのように関心のコンポーネントでディレクトリ作って、reduxのviewと~modelsがセットになっているのが使いやすいように、関心の中でviewとデータがMVCをサイクル仕組みが綺麗そうだな
-    - modelsが`queries`になるイメージかな
+    - Aは問題含みっぽいからAのように関心のコンポーネントでディレクトリ作って、reduxのviewと~modelsがセットになっているのが使いやすいように、関心の中でviewとデータがMVCをサイクル仕組みが綺麗そうだな
+    - modelsが`queries`と`mutations`になるイメージかな。なんかORMapperっぽい。QLだからかな
     - viewModelsはGraphQL化は難しそう。だけどredux使って中央管理するほどでもないからローカルステートでもいい気もする。
+- ディレクトリ構成探訪
+  - [tsxファイルのリポジトリ](https://github.com/search?l=TSX&p=2&q=import+Query+react-apollo&type=Code)を見てみたらちゃんと作った人が多そうで、サンプルアプリリポジトリをかなり足切りできていい
+  - [これ](https://github.com/jharrilim/downtime/tree/7640906ab1d0b9d7e5d1d778af5f8d3d73825fa0/client/src)のようにcompornentとデータをトップレベルで分けているリポジトリを結構見かける
+  - 正しいかどうかは知らないけど、[関心ごとに分けているリポジトリ](https://github.com/storyvine/storyvine-web-app/blob/bbcc5d55267f05bdfa31122a0a04f1e4e9484e03/app/modules/VariablesDashboard/VariablesDashboard.tsx)も存在する
+    - これは色々勉強になる。
+      - renderメソッド前にtsxをめっちゃ定義してrenderはmainメソッドに徹しているところ
+      - Mutationタグのupdate属性
+  
+## 本に書いてなくて自分でリファレンスやチュートリアルを見て学んだこと
+- [引数の設定の仕方](https://graphql-ruby.org/getting_started)
+  - GraphQLRuby
+    - `QueryType`でfieldメソッド内の[argumentに入れたい引数の型を入れる](https://graphql-ruby.org/getting_started#build-a-schema)
+      - `GraphQL::Schema::Field`の[initializeの引数に設定されているもの](https://github.com/rmosolgo/graphql-ruby/blob/1a9a20f3da629e63ea8e5ee8400be82218f9edc3/lib/graphql/schema/field.rb#L196)
+      - なぜそこを見たか：`QueryType < Types::BaseObject`という表記から追って`Types::BaseObject`が使っているクラスが[GraphQL::Schema::Field](https://github.com/rmosolgo/graphql-ruby/blob/0cc55ae620db74af98a978b5b0623ee800dff266/lib/graphql/schema/member/has_fields.rb#L11)が使っていたため
+    - 引数の設定方法
+      - [設定例](https://graphql-ruby.org/fields/arguments.html)
+      - [設定できる値](https://graphql-ruby.org/api-doc/1.10.8/GraphQL/Schema/Argument.html)
+      - 複数の引数を設定する場合はattr_readerとかみたいにまたargument記法を書く。ドキュメントはなかったからえいやでやったら複数設定できたから、とりあえずそれで対応
+    - [GraphQL::Schema::Resolver](https://github.com/rmosolgo/graphql-ruby/blob/master/lib/graphql/schema/resolver.rb#L226)には型とnull制約しか入らない
+  - ApolloClientのQueryタグ
+    - variablesフィールドに入れればよさそう([参考](https://github.com/apollographql/react-apollo/blob/master/packages/components/src/Query.tsx#L15))
+- 気づいたらフォーム作成の必要性に迫られていた
+  - これがredux-formが使いにくくても使った理由だけど、触り始めたら触るたびに必要なものが増えて面倒くさいパティーン。
+  - ただ、簡単に調べてみる限りapolloのいい感じのformライブラリはないらしい
+  - ただただformタグ内のinputタグのname属性と値をとるだけで、apolloを使うだけでかなり簡略化されてるからみんな自前でやれちゃう範囲なのかも。
+  - formicってやつ使ってみよっかな。redux使わないからreduxFormもやりたくないし。
+    - ドキュメント
+      - [なんかいい実装](https://stackoverflow.com/questions/52916733/apollo-form-state-management)
+      - [formicとapolloのqiita](https://qiita.com/pokotyan/items/b47c55563461982366a9#%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%81%8C%E4%BD%9C%E3%82%8A%E3%81%9F%E3%81%84)
+      - [formicのqiita](https://qiita.com/akameco/items/0151c7c15b7967a147ec)
+      - [formicのドキュメント](https://jaredpalmer.com/formik/docs/overview)
+    - 小並感だけどformikよかった。シンプルだから使いやすい
+    - formikのI/F
+      - 使われ方 `<Formic ...InputParams, onSubmit=(SubmitParams) => submit処理> {(...OutputParams) => formのjsx} </Formic>`
+      - [InputParams](https://jaredpalmer.com/formik/docs/api/formik)
+        - [Github](https://github.com/jaredpalmer/formik/blob/master/packages/formik/src/Formik.tsx#L133) 
+      - [OutputParams](https://github.com/jaredpalmer/formik/blob/master/packages/formik/src/Formik.tsx#L959)
+        - initialValues: initialValues.current
+        - initialErrors: initialErrors.current
+        - initialTouched: initialTouched.current
+        - initialStatus: initialStatus.current
+        - handleBlur
+        - handleChange
+        - handleReset
+        - handleSubmit
+        - resetForm
+        - setErrors
+        - setFormikState
+        - setFieldTouched
+        - setFieldValue
+        - setFieldError
+        - setStatus
+        - setSubmitting
+        - setTouched
+        - setValues
+        - submitForm
+        - validateForm: validateFormWithHighPriority
+        - validateField
+        - isValid
+        - dirty
+        - unregisterField
+        - registerField
+        - getFieldProps
+        - getFieldMeta
+        - getFieldHelpers
+        - validateOnBlur
+        - validateOnChange
+        - validateOnMount
+      - [SubmitParams](https://github.com/jaredpalmer/formik/blob/master/packages/formik/src/Formik.tsx#L842)
+        - resetForm
+        - validateForm: validateFormWithHighPriority
+        - validateField
+        - setErrors
+        - setFieldError
+        - setFieldTouched
+        - setFieldValue
+        - setStatus
+        - setSubmitting
+        - setTouched
+        - setValues
+        - setFormikState
+        - submitForm
+    - formとapolloの連携
+      - MutationタグとFormikタグの相互循環。
+        - Mutationタグ作るときのvariablesはFormikでつくる
+        - react-apolloのgraphqlを使うとvariablesとかを処理実行時に入れられるので依存関係を逆転できる
+          - 結局中でやっていることは[Mutationタグ](https://github.com/apollographql/react-apollo/blob/master/packages/hoc/src/mutation-hoc.tsx#L69)
+          - でもloadingとかerrorとか使えなくなる
+      - 入れ子が多くなったときには`compose`メソッドですっきりする
+        - [qiita](https://qiita.com/pokotyan/items/b47c55563461982366a9#%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%81%8C%E4%BD%9C%E3%82%8A%E3%81%9F%E3%81%84)
+        - [コード例](https://gist.github.com/tb/4a3a6d19c82a66ee04e1cb6564649e35)
+      - [withFormik](https://jaredpalmer.com/formik/docs/api/withFormik#__docusaurus)
+        - でもwithFormikをうまく使えない気がするから、[これ](https://gist.github.com/tb/4a3a6d19c82a66ee04e1cb6564649e35#file-formikapollo-js-L81)チックなことする
+        - 

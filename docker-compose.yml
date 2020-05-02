@@ -12,7 +12,7 @@ services:
   todo_app_view:
     container_name: todo_view
     build: ./todo_list_view
-    command: "/root/todo_list_view/entrypoint.sh"
+    command: ". /root/todo_list_view/entrypoint.sh"
     ports:
       - "30419:30419"
     volumes:
