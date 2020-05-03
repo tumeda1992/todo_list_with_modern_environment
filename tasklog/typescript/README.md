@@ -1,0 +1,27 @@
+- 参照ドキュメント
+  - 最初は[英語ドキュメント](https://www.typescriptlang.org/docs/handbook/functions.html)を読んでたんだけど断念
+    - 概略は知ってて全ドキュメントを概観したいという欲求の場合、英語で読むのは不適当。時間がかかりすぎる。こんなかけるところじゃない。
+      - 初学の場合も不適当だから結局英語で読むのはスポットで少し読むくらいなんだろうな。仕方なく読む場合のみ
+    - ハンドブックのところを速く概観したかったからそれを探した
+  - [日本語版](http://js.studio-kingdom.com/typescript/handbook/functions)
+    - 文字が小さいけど外観できるのに比べれば安いリスク。170%で観たらちょうどよかった
+  - [DeepDive](https://typescript-jp.gitbook.io/deep-dive/)
+- 型指定
+  - nullを許容する場合
+    - `str string | null`
+- interface
+  - 関数に使う場合：引数と返り値の型指定
+    - Reactコンポーネントではそれをpropsと呼ぶ
+  - クラスに使う場合：フィールドの型指定とメソッドの型と返り値指定
+  - ?でオプショナルなものも定義できる
+  - interfaceも継承できる
+- Tips
+  - テーマつけられないけど大事だからメモしたいやつ
+  - 一応な知識
+    - 一応工夫すればオーバーロードできる([参考](http://js.studio-kingdom.com/typescript/handbook/functions))
+- React
+  - 基本的にpropTypesは型interfaceで肩代わりできる
+    - [ただライブラリ公開とかして、jsとかts以外でtsコンポーネントを触るときには制約として便利](https://qiita.com/HiroshiAkutsu/items/1528927165f750c37ce0)
+  - 基本的な型定義
+    - [関数コンポーネント](https://typescript-jp.gitbook.io/deep-dive/tsx/react#konpnentofunctional-components)
+    - [クラスコンポーネント](https://typescript-jp.gitbook.io/deep-dive/tsx/react#kurasukonpnentoclass-components)
