@@ -1,0 +1,14 @@
+- 簡単にスクレイピングできる環境を作りたい
+- 「docker配備PC内のchromeを使う」vs「dockerでchromeを立てる(アプリと別コンテナ)」vs「dockerでchromeを立てる(アプリと同コンテナ)」
+  - 所感
+    - どれも取りうる。だから主流だったり効率的な方法を取りたい
+    - docker立てるくせにPCのchromeを立てる記事も多い。せっかくポートを独立して立てられて共通の環境を立てられるならdockerでchrome、それもmysqlみたいに独立コンテナとして立てればいいのにと思う。それとも簡便だったりchromeが重いとかでそうせざるを得ない理由があるのか
+  - 各手法について
+    - dockerでchromeを立てる
+      - アプリと別コンテナ
+        - [pythonで別コンテナのselenium環境にアクセス](https://qiita.com/niya1123/items/6cc970b3aa8f94ce2909)
+        - [とりあえずスクレイピング関係なくchromeコンテナ立てる](https://qiita.com/dd511805/items/dfe03c5486bf1421875a)
+      - アプリと同コンテナ
+        - [実装例(python)](https://qiita.com/rotelstift/items/7dafcdcae3ca18b65b26)
+    - docker配備PC内のchromeを使う
+      - [実装例Qiita](https://qiita.com/nullnull/items/61dae392f853f260cfb0)([Dockerfile](https://github.com/nullnull/scraping_sample/blob/master/Dockerfile))
