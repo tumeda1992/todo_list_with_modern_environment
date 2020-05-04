@@ -1,0 +1,581 @@
+$ npx create-next-app
+npx: 1個のパッケージを18.644秒でインストールしました。
+✔ What is your project named? … hogehoge <- プロンプト
+✔ Pick a template › Default starter app <- 選択プロンプト
+Creating a new Next.js app in /Users/user/tmp/hoge/hogehoge.
+
+Installing react, react-dom, and next using yarn...
+
+yarn add v1.22.4
+info No lockfile found.
+[1/4] 🔍  Resolving packages...
+warning next > mkdirp@0.5.3: Legacy versions of mkdirp are no longer supported. Please update to mkdirp 1.x. (Note that the API surface has changed to use Promises in 1.x.)
+warning next > webpack > watchpack > chokidar@2.1.8: Chokidar 2 will break on node v14+. Upgrade to chokidar 3 with 15x less dependencies.
+warning next > webpack > watchpack > chokidar > fsevents@1.2.12: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.
+warning next > resolve-url-loader > rework > css > urix@0.1.0: Please see https://github.com/lydell/urix#deprecated
+warning next > fork-ts-checker-webpack-plugin > micromatch > snapdragon > source-map-resolve > urix@0.1.0: Please see https://github.com/lydell/urix#deprecated
+warning next > fork-ts-checker-webpack-plugin > micromatch > snapdragon > source-map-resolve > resolve-url@0.2.1: https://github.com/lydell/resolve-url#deprecated
+[2/4] 🚚  Fetching packages...
+[3/4] 🔗  Linking dependencies...
+[4/4] 🔨  Building fresh packages...
+success Saved lockfile.
+success Saved 505 new dependencies.
+info Direct dependencies
+├─ next@9.3.6
+├─ react-dom@16.13.1
+└─ react@16.13.1
+info All dependencies
+├─ @ampproject/toolbox-core@2.3.0
+├─ @ampproject/toolbox-optimizer@2.2.0
+├─ @ampproject/toolbox-runtime-version@2.3.0
+├─ @ampproject/toolbox-script-csp@2.3.0
+├─ @ampproject/toolbox-validator-rules@2.3.0
+├─ @babel/core@7.7.2
+├─ @babel/generator@7.9.6
+├─ @babel/helper-builder-binary-assignment-operator-visitor@7.8.3
+├─ @babel/helper-builder-react-jsx-experimental@7.9.5
+├─ @babel/helper-builder-react-jsx@7.9.0
+├─ @babel/helper-create-class-features-plugin@7.9.6
+├─ @babel/helper-define-map@7.8.3
+├─ @babel/helper-explode-assignable-expression@7.8.3
+├─ @babel/helper-hoist-variables@7.8.3
+├─ @babel/helper-replace-supers@7.9.6
+├─ @babel/helper-validator-identifier@7.9.5
+├─ @babel/helper-wrap-function@7.8.3
+├─ @babel/helpers@7.9.6
+├─ @babel/highlight@7.9.0
+├─ @babel/parser@7.9.6
+├─ @babel/plugin-proposal-async-generator-functions@7.8.3
+├─ @babel/plugin-proposal-class-properties@7.7.0
+├─ @babel/plugin-proposal-dynamic-import@7.8.3
+├─ @babel/plugin-proposal-json-strings@7.8.3
+├─ @babel/plugin-proposal-nullish-coalescing-operator@7.7.4
+├─ @babel/plugin-proposal-numeric-separator@7.8.3
+├─ @babel/plugin-proposal-object-rest-spread@7.6.2
+├─ @babel/plugin-proposal-optional-catch-binding@7.8.3
+├─ @babel/plugin-proposal-optional-chaining@7.7.4
+├─ @babel/plugin-proposal-unicode-property-regex@7.8.8
+├─ @babel/plugin-syntax-async-generators@7.8.4
+├─ @babel/plugin-syntax-bigint@7.8.3
+├─ @babel/plugin-syntax-dynamic-import@7.8.3
+├─ @babel/plugin-syntax-json-strings@7.8.3
+├─ @babel/plugin-syntax-nullish-coalescing-operator@7.8.3
+├─ @babel/plugin-syntax-numeric-separator@7.8.3
+├─ @babel/plugin-syntax-object-rest-spread@7.8.3
+├─ @babel/plugin-syntax-optional-catch-binding@7.8.3
+├─ @babel/plugin-syntax-optional-chaining@7.8.3
+├─ @babel/plugin-syntax-top-level-await@7.8.3
+├─ @babel/plugin-syntax-typescript@7.8.3
+├─ @babel/plugin-transform-arrow-functions@7.8.3
+├─ @babel/plugin-transform-async-to-generator@7.8.3
+├─ @babel/plugin-transform-block-scoped-functions@7.8.3
+├─ @babel/plugin-transform-block-scoping@7.8.3
+├─ @babel/plugin-transform-classes@7.9.5
+├─ @babel/plugin-transform-computed-properties@7.8.3
+├─ @babel/plugin-transform-destructuring@7.9.5
+├─ @babel/plugin-transform-dotall-regex@7.8.3
+├─ @babel/plugin-transform-duplicate-keys@7.8.3
+├─ @babel/plugin-transform-exponentiation-operator@7.8.3
+├─ @babel/plugin-transform-for-of@7.9.0
+├─ @babel/plugin-transform-function-name@7.8.3
+├─ @babel/plugin-transform-literals@7.8.3
+├─ @babel/plugin-transform-member-expression-literals@7.8.3
+├─ @babel/plugin-transform-modules-amd@7.9.6
+├─ @babel/plugin-transform-modules-commonjs@7.7.0
+├─ @babel/plugin-transform-modules-systemjs@7.9.6
+├─ @babel/plugin-transform-modules-umd@7.9.0
+├─ @babel/plugin-transform-named-capturing-groups-regex@7.8.3
+├─ @babel/plugin-transform-new-target@7.8.3
+├─ @babel/plugin-transform-object-super@7.8.3
+├─ @babel/plugin-transform-parameters@7.9.5
+├─ @babel/plugin-transform-property-literals@7.8.3
+├─ @babel/plugin-transform-react-display-name@7.8.3
+├─ @babel/plugin-transform-react-jsx-self@7.9.0
+├─ @babel/plugin-transform-react-jsx-source@7.9.0
+├─ @babel/plugin-transform-react-jsx@7.9.4
+├─ @babel/plugin-transform-regenerator@7.8.7
+├─ @babel/plugin-transform-reserved-words@7.8.3
+├─ @babel/plugin-transform-runtime@7.6.2
+├─ @babel/plugin-transform-shorthand-properties@7.8.3
+├─ @babel/plugin-transform-spread@7.8.3
+├─ @babel/plugin-transform-sticky-regex@7.8.3
+├─ @babel/plugin-transform-template-literals@7.8.3
+├─ @babel/plugin-transform-typeof-symbol@7.8.4
+├─ @babel/plugin-transform-typescript@7.9.6
+├─ @babel/plugin-transform-unicode-regex@7.8.3
+├─ @babel/preset-env@7.7.1
+├─ @babel/preset-modules@0.1.1
+├─ @babel/preset-react@7.7.0
+├─ @babel/preset-typescript@7.7.2
+├─ @babel/runtime@7.7.2
+├─ @next/react-refresh-utils@9.3.6
+├─ @types/q@1.5.2
+├─ @webassemblyjs/floating-point-hex-parser@1.9.0
+├─ @webassemblyjs/helper-code-frame@1.9.0
+├─ @webassemblyjs/helper-fsm@1.9.0
+├─ @webassemblyjs/helper-wasm-section@1.9.0
+├─ @webassemblyjs/wasm-edit@1.9.0
+├─ @webassemblyjs/wasm-opt@1.9.0
+├─ @xtuc/ieee754@1.2.0
+├─ abbrev@1.1.1
+├─ acorn@6.4.1
+├─ adjust-sourcemap-loader@2.0.0
+├─ ajv-errors@1.0.1
+├─ ajv-keywords@3.4.1
+├─ ajv@6.12.2
+├─ ansi-styles@3.2.1
+├─ anymatch@3.1.1
+├─ aproba@1.2.0
+├─ are-we-there-yet@1.1.5
+├─ argparse@1.0.10
+├─ arity-n@1.0.4
+├─ arr-flatten@1.1.0
+├─ asn1.js@4.10.1
+├─ assert@1.4.1
+├─ assign-symbols@1.0.0
+├─ async-each@1.0.3
+├─ atob@2.1.2
+├─ babel-code-frame@6.26.0
+├─ babel-plugin-transform-define@2.0.0
+├─ babel-plugin-transform-react-remove-prop-types@0.4.24
+├─ balanced-match@1.0.0
+├─ base@0.11.2
+├─ base64-js@1.3.1
+├─ binary-extensions@2.0.0
+├─ bindings@1.5.0
+├─ bluebird@3.7.2
+├─ boolbase@1.0.0
+├─ brace-expansion@1.1.11
+├─ braces@2.3.2
+├─ browserify-aes@1.2.0
+├─ browserify-cipher@1.0.1
+├─ browserify-des@1.0.2
+├─ browserify-sign@4.0.4
+├─ browserify-zlib@0.2.0
+├─ buffer-xor@1.0.3
+├─ buffer@4.9.2
+├─ builtin-status-codes@3.0.0
+├─ cacache@12.0.4
+├─ cache-base@1.0.1
+├─ caller-callsite@2.0.0
+├─ caller-path@2.0.0
+├─ callsites@2.0.0
+├─ camelcase@5.3.1
+├─ caniuse-lite@1.0.30001048
+├─ chokidar@3.4.0
+├─ chownr@1.1.4
+├─ chrome-trace-event@1.0.2
+├─ cipher-base@1.0.4
+├─ class-utils@0.3.6
+├─ clone-deep@4.0.1
+├─ coa@2.0.2
+├─ code-point-at@1.1.0
+├─ collection-visit@1.0.0
+├─ color-convert@1.9.3
+├─ color-name@1.1.3
+├─ color-string@1.5.3
+├─ color@3.1.2
+├─ compose-function@3.0.3
+├─ concat-map@0.0.1
+├─ concat-stream@1.6.2
+├─ console-browserify@1.2.0
+├─ console-control-strings@1.1.0
+├─ constants-browserify@1.0.0
+├─ copy-concurrently@1.0.5
+├─ copy-descriptor@0.1.1
+├─ core-js-compat@3.6.5
+├─ core-util-is@1.0.2
+├─ cosmiconfig@5.2.1
+├─ create-ecdh@4.0.3
+├─ create-hmac@1.1.7
+├─ crypto-browserify@3.12.0
+├─ css-color-names@0.0.4
+├─ css-declaration-sorter@4.0.1
+├─ css-loader@3.5.3
+├─ css-select-base-adapter@0.1.1
+├─ css-select@2.1.0
+├─ css-tree@1.0.0-alpha.37
+├─ css-what@3.2.1
+├─ css@2.2.4
+├─ cssnano-preset-default@4.0.7
+├─ cssnano-util-raw-cache@4.0.1
+├─ cssnano-util-same-parent@4.0.1
+├─ cssnano@4.1.10
+├─ cyclist@1.0.1
+├─ d@1.0.1
+├─ debug@2.6.9
+├─ decode-uri-component@0.2.0
+├─ deep-extend@0.6.0
+├─ delegates@1.0.0
+├─ des.js@1.0.1
+├─ detect-libc@1.0.3
+├─ diffie-hellman@5.0.3
+├─ dom-serializer@0.2.2
+├─ domain-browser@1.2.0
+├─ domutils@2.0.0
+├─ dot-prop@5.2.0
+├─ duplexify@3.7.1
+├─ electron-to-chromium@1.3.427
+├─ enhanced-resolve@4.1.1
+├─ errno@0.1.7
+├─ error-ex@1.3.2
+├─ es-to-primitive@1.2.1
+├─ es5-ext@0.10.53
+├─ es6-iterator@2.0.3
+├─ es6-symbol@3.1.3
+├─ escape-string-regexp@1.0.5
+├─ eslint-scope@4.0.3
+├─ esprima@4.0.1
+├─ esrecurse@4.2.1
+├─ estraverse@4.3.0
+├─ events@3.1.0
+├─ evp_bytestokey@1.0.3
+├─ expand-brackets@2.1.4
+├─ ext@1.4.0
+├─ extglob@2.0.4
+├─ fast-deep-equal@3.1.1
+├─ fast-json-stable-stringify@2.1.0
+├─ file-uri-to-path@1.0.0
+├─ fill-range@4.0.0
+├─ find-cache-dir@3.3.1
+├─ find-up@2.1.0
+├─ flush-write-stream@1.1.1
+├─ for-in@1.0.2
+├─ fork-ts-checker-webpack-plugin@3.1.1
+├─ from2@2.3.0
+├─ fs-minipass@1.2.7
+├─ fs.realpath@1.0.0
+├─ fsevents@2.1.3
+├─ gauge@2.7.4
+├─ get-value@2.0.6
+├─ glob-parent@5.1.1
+├─ glob-to-regexp@0.4.1
+├─ glob@7.1.6
+├─ has-ansi@2.0.0
+├─ has-unicode@2.0.1
+├─ has-value@1.0.0
+├─ hash.js@1.1.7
+├─ hex-color-regex@1.1.0
+├─ hmac-drbg@1.0.1
+├─ hsl-regex@1.0.0
+├─ hsla-regex@1.0.0
+├─ html-comment-regex@1.1.2
+├─ htmlparser2@4.1.0
+├─ https-browserify@1.0.0
+├─ iconv-lite@0.4.24
+├─ ieee754@1.1.13
+├─ ignore-walk@3.0.3
+├─ import-fresh@2.0.0
+├─ infer-owner@1.0.4
+├─ inflight@1.0.6
+├─ ini@1.3.5
+├─ invariant@2.2.4
+├─ is-absolute-url@2.1.0
+├─ is-accessor-descriptor@1.0.0
+├─ is-arrayish@0.2.1
+├─ is-binary-path@2.1.0
+├─ is-callable@1.1.5
+├─ is-color-stop@1.1.0
+├─ is-data-descriptor@1.0.0
+├─ is-date-object@1.0.2
+├─ is-descriptor@1.0.2
+├─ is-directory@0.3.1
+├─ is-extglob@2.1.1
+├─ is-fullwidth-code-point@1.0.0
+├─ is-glob@4.0.1
+├─ is-obj@2.0.0
+├─ is-plain-obj@1.1.0
+├─ is-plain-object@2.0.4
+├─ is-regex@1.0.5
+├─ is-resolvable@1.1.0
+├─ is-svg@3.0.0
+├─ is-symbol@1.0.3
+├─ is-windows@1.0.2
+├─ is-wsl@1.1.0
+├─ isarray@1.0.0
+├─ jest-worker@24.9.0
+├─ js-levenshtein@1.1.6
+├─ js-tokens@4.0.0
+├─ jsesc@2.5.2
+├─ json-parse-better-errors@1.0.2
+├─ json-schema-traverse@0.4.1
+├─ loader-runner@2.4.0
+├─ locate-path@2.0.0
+├─ lodash.memoize@4.1.2
+├─ lodash.uniq@4.5.0
+├─ loose-envify@1.4.0
+├─ lru-cache@5.1.1
+├─ make-dir@3.1.0
+├─ map-visit@1.0.0
+├─ mdn-data@2.0.4
+├─ memory-fs@0.4.1
+├─ merge-stream@2.0.0
+├─ microevent.ts@0.1.1
+├─ miller-rabin@4.0.1
+├─ mini-css-extract-plugin@0.8.0
+├─ minimalistic-crypto-utils@1.0.1
+├─ minimatch@3.0.4
+├─ minimist@1.2.5
+├─ minipass@2.9.0
+├─ minizlib@1.3.3
+├─ mississippi@3.0.0
+├─ mixin-deep@1.3.2
+├─ move-concurrently@1.0.1
+├─ ms@2.1.2
+├─ nan@2.14.1
+├─ nanomatch@1.2.13
+├─ native-url@0.3.1
+├─ needle@2.4.1
+├─ neo-async@2.6.1
+├─ next-tick@1.0.0
+├─ next@9.3.6
+├─ node-fetch@2.6.0
+├─ node-libs-browser@2.2.1
+├─ node-pre-gyp@0.14.0
+├─ node-releases@1.1.53
+├─ nopt@4.0.3
+├─ normalize-html-whitespace@1.0.0
+├─ normalize-url@1.9.1
+├─ npm-bundled@1.1.1
+├─ npm-packlist@1.4.8
+├─ npmlog@4.1.2
+├─ nth-check@1.0.2
+├─ number-is-nan@1.0.1
+├─ object-assign@4.1.1
+├─ object-copy@0.1.0
+├─ object-inspect@1.7.0
+├─ object-keys@1.1.1
+├─ object-path@0.11.4
+├─ object.getownpropertydescriptors@2.1.0
+├─ object.values@1.1.1
+├─ os-browserify@0.3.0
+├─ os-homedir@1.0.2
+├─ os-tmpdir@1.0.2
+├─ osenv@0.1.5
+├─ p-limit@2.3.0
+├─ p-locate@2.0.0
+├─ p-try@2.2.0
+├─ pako@1.0.11
+├─ parallel-transform@1.2.0
+├─ parse-json@4.0.0
+├─ pascalcase@0.1.1
+├─ path-browserify@0.0.1
+├─ path-dirname@1.0.2
+├─ path-parse@1.0.6
+├─ picomatch@2.2.2
+├─ pify@4.0.1
+├─ pkg-dir@4.2.0
+├─ pkg-up@2.0.0
+├─ pnp-webpack-plugin@1.5.0
+├─ posix-character-classes@0.1.1
+├─ postcss-calc@7.0.2
+├─ postcss-colormin@4.0.3
+├─ postcss-convert-values@4.0.1
+├─ postcss-discard-comments@4.0.2
+├─ postcss-discard-duplicates@4.0.2
+├─ postcss-discard-empty@4.0.1
+├─ postcss-discard-overridden@4.0.1
+├─ postcss-merge-longhand@4.0.11
+├─ postcss-merge-rules@4.0.3
+├─ postcss-minify-font-values@4.0.2
+├─ postcss-minify-gradients@4.0.2
+├─ postcss-minify-params@4.0.2
+├─ postcss-minify-selectors@4.0.2
+├─ postcss-modules-extract-imports@2.0.0
+├─ postcss-modules-local-by-default@3.0.2
+├─ postcss-modules-scope@2.2.0
+├─ postcss-modules-values@3.0.0
+├─ postcss-normalize-charset@4.0.1
+├─ postcss-normalize-display-values@4.0.2
+├─ postcss-normalize-positions@4.0.2
+├─ postcss-normalize-repeat-style@4.0.2
+├─ postcss-normalize-string@4.0.2
+├─ postcss-normalize-timing-functions@4.0.2
+├─ postcss-normalize-unicode@4.0.1
+├─ postcss-normalize-url@4.0.1
+├─ postcss-normalize-whitespace@4.0.2
+├─ postcss-ordered-values@4.1.2
+├─ postcss-reduce-initial@4.0.3
+├─ postcss-reduce-transforms@4.0.2
+├─ postcss-safe-parser@4.0.2
+├─ postcss-svgo@4.0.2
+├─ postcss-unique-selectors@4.0.1
+├─ prepend-http@1.0.4
+├─ private@0.1.8
+├─ process-nextick-args@2.0.1
+├─ process@0.11.10
+├─ promise-inflight@1.0.1
+├─ prop-types-exact@1.2.0
+├─ prop-types@15.7.2
+├─ prr@1.0.1
+├─ public-encrypt@4.0.3
+├─ pump@3.0.0
+├─ pumpify@1.5.1
+├─ punycode@1.4.1
+├─ q@1.5.1
+├─ query-string@4.3.4
+├─ querystring-es3@0.2.1
+├─ querystring@0.2.0
+├─ randomfill@1.0.4
+├─ rc@1.2.8
+├─ react-dom@16.13.1
+├─ react-is@16.8.6
+├─ react-refresh@0.8.1
+├─ react@16.13.1
+├─ readable-stream@2.3.7
+├─ readdirp@3.4.0
+├─ reflect.ownkeys@0.2.0
+├─ regenerate-unicode-properties@8.2.0
+├─ regenerator-runtime@0.13.5
+├─ regenerator-transform@0.14.4
+├─ regex-parser@2.2.10
+├─ regexpu-core@4.7.0
+├─ regjsgen@0.5.1
+├─ regjsparser@0.6.4
+├─ remove-trailing-separator@1.1.0
+├─ repeat-element@1.1.3
+├─ resolve-from@3.0.0
+├─ resolve-url-loader@3.1.1
+├─ resolve-url@0.2.1
+├─ resolve@1.17.0
+├─ ret@0.1.15
+├─ rework-visit@1.0.0
+├─ rework@1.0.1
+├─ rgb-regex@1.0.1
+├─ rgba-regex@1.0.0
+├─ run-queue@1.0.3
+├─ safe-buffer@5.2.0
+├─ safer-buffer@2.1.2
+├─ sass-loader@8.0.2
+├─ sax@1.2.4
+├─ scheduler@0.19.1
+├─ semver@5.7.1
+├─ serialize-javascript@2.1.2
+├─ set-blocking@2.0.0
+├─ set-value@2.0.1
+├─ setimmediate@1.0.5
+├─ shallow-clone@3.0.1
+├─ signal-exit@3.0.3
+├─ simple-swizzle@0.2.2
+├─ snapdragon-node@2.1.1
+├─ snapdragon-util@3.0.1
+├─ sort-keys@1.1.2
+├─ source-list-map@2.0.1
+├─ source-map-resolve@0.5.3
+├─ source-map-url@0.4.0
+├─ split-string@3.1.0
+├─ sprintf-js@1.0.3
+├─ ssri@6.0.1
+├─ stable@0.1.8
+├─ static-extend@0.1.2
+├─ stream-browserify@2.0.2
+├─ stream-each@1.2.3
+├─ stream-http@2.8.3
+├─ strict-uri-encode@1.1.0
+├─ string_decoder@1.3.0
+├─ string-hash@1.1.3
+├─ string-width@1.0.2
+├─ string.prototype.trimend@1.0.1
+├─ string.prototype.trimleft@2.1.2
+├─ string.prototype.trimright@2.1.2
+├─ string.prototype.trimstart@1.0.1
+├─ strip-ansi@3.0.1
+├─ strip-json-comments@2.0.1
+├─ style-loader@1.2.0
+├─ styled-jsx@3.2.5
+├─ stylehacks@4.0.3
+├─ stylis-rule-sheet@0.0.10
+├─ stylis@3.5.4
+├─ svgo@1.3.2
+├─ tar@4.4.13
+├─ terser-webpack-plugin@1.4.3
+├─ terser@4.6.8
+├─ through2@2.0.5
+├─ timers-browserify@2.0.11
+├─ timsort@0.3.0
+├─ to-arraybuffer@1.0.1
+├─ to-object-path@0.3.0
+├─ to-regex-range@2.1.1
+├─ traverse@0.6.6
+├─ ts-pnp@1.2.0
+├─ tslib@1.11.1
+├─ tty-browserify@0.0.0
+├─ type@1.2.0
+├─ typedarray@0.0.6
+├─ unicode-canonical-property-names-ecmascript@1.0.4
+├─ unicode-match-property-ecmascript@1.0.4
+├─ unicode-match-property-value-ecmascript@1.2.0
+├─ unicode-property-aliases-ecmascript@1.1.0
+├─ union-value@1.0.1
+├─ unique-filename@1.1.1
+├─ unique-slug@2.0.2
+├─ unquote@1.1.1
+├─ unset-value@1.0.0
+├─ upath@1.2.0
+├─ uri-js@4.2.2
+├─ url@0.11.0
+├─ use-subscription@1.1.1
+├─ use@3.1.1
+├─ util-deprecate@1.0.2
+├─ util.promisify@1.0.1
+├─ vendors@1.0.4
+├─ vm-browserify@1.1.2
+├─ watchpack@2.0.0-beta.13
+├─ webpack-sources@1.4.3
+├─ webpack@4.43.0
+├─ whatwg-fetch@3.0.0
+├─ wide-align@1.1.3
+├─ worker-farm@1.7.0
+├─ worker-rpc@0.1.1
+├─ xtend@4.0.2
+├─ y18n@4.0.0
+└─ yallist@3.1.1
+✨  Done in 109.59s.
+
+Initialized a git repository.
+
+Success! Created hogehoge at /Users/user/tmp/hoge/hogehoge
+Inside that directory, you can run several commands:
+
+  yarn dev
+    Starts the development server.
+
+  yarn build
+    Builds the app for production.
+
+  yarn start
+    Runs the built app in production mode.
+
+We suggest that you begin by typing:
+
+  cd hogehoge
+  yarn dev
+
+~/tmp/hoge user 20:32:36
+$ ls
+hogehoge
+~/tmp/hoge user 20:33:18
+$ cd hogehoge
+~/tmp/hoge/hogehoge user 20:33:20
+$ ls -a                                                                                                                       [master]
+.		.git		README.md	package.json	public
+..		.gitignore	node_modules	pages		yarn.lock
+~/tmp/hoge/hogehoge user 20:33:29
+$                                                                                                                             [master]
+~/tmp/hoge/hogehoge user 20:34:13
+$ cat package.json                                                                                                            [master]
+{
+  "name": "hogehoge",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "9.3.6",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  }
+}
