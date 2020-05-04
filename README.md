@@ -161,7 +161,7 @@ https://github.com/setsumaru1992/internal_application_study_reports
 - [x] 最低限GraphQLの設定をしてフロントとバックの接合をさせる
 - [ ] 必要に応じて以下を設定
   - [x] TypeScript
-  - [ ] next.js
+  - [x] next.js
   - [ ] node.jsでhelloWorldライブラリ作成
   - [ ] OpenAPIを使用したスキーマ駆動設計
   - [ ] unicorn
