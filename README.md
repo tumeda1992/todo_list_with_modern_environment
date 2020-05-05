@@ -187,7 +187,7 @@ https://github.com/setsumaru1992/internal_application_study_reports
 - [ ] 必要に応じて以下を設定
   - [x] TypeScript
   - [x] next.js
-  - [ ] node.jsでhelloWorldライブラリ作成
+  - [x] node.js~~でhelloWorldライブラリ作成~~
   - [ ] OpenAPIを使用したスキーマ駆動設計
   - [ ] unicorn
   - [ ] dcron
