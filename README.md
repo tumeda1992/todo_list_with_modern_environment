@@ -174,6 +174,7 @@ https://github.com/setsumaru1992/internal_application_study_reports
   - [x] (準備)無駄なマイクロサービスを作り、複数サービス稼働状態を作る
     - フロントとバックを分けたら達成してた
   - [ ] 自作サービスで毎回必要になるスクレイピング環境をサーバサイドに立てる
+  - [ ] nginxを立ててhostsも変えて、本番実行時に行うsame-originなURL構成を再現する
   - [ ] 複数サービス運用をやってみる
   - [ ] k8sやってみる
   - [ ] 無理ならdocker-compose
