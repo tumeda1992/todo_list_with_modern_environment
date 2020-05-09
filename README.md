@@ -64,8 +64,31 @@ https://github.com/setsumaru1992/internal_application_study_reports
     - 実現できること
       - クライアントサイドのデータ管理をまるっとライブラリに委託できる。
   - 具体的に何をしたいのか
-    - 表題ママ
-    - ついでにWeb+DBPRESSvol108のOpenAPIを使ったスキーマ駆動設計もできるとなおよし
+    - マスト
+      - ドキュメントを読んでサンプルアプリ実装
+      - 自分のアプリに適用し、継続的に触る仕組みを作る
+    - ベター
+      - 初めてのGraphQLのWebSocket通信
+      - Web+DBPRESSvol108のOpenAPIを使ったスキーマ駆動設計もできるとなおよし
+- next.js
+  - できるようになることで実現できること
+    - 抱えている問題
+      - ~
+    - 実現できること
+      - ~
+  - 具体的に何をしたいのか
+    - ~
+- node.js
+  - できるようになることで実現できること
+    - node前提のことが多いから。エントリーポイントとかくらい知っておきたい。ライブラリの起点とかも
+  - 具体的に何をしたいのか
+    - マスト
+      - ドキュメント読んでHelloWorld
+      - 自作HelloWorldライブラリを作ってライブラリ読むときとかのリテラシーをつける
+    - ベター
+      - WebSocketのHelloWorld実装
+      - expressでHelloWorld
+      - mongo連携
 - unicornで立ち上げたい
   - できるようになることで実現できること
     - 抱えている問題
@@ -118,7 +141,10 @@ https://github.com/setsumaru1992/internal_application_study_reports
     - 実現できること
       - 挙げた問題解決
   - 具体的に何をしたいのか
-    - 表題ママ
+    - マスト
+      - apolloClientやnodeの欄で書いたようにやる
+    - ベター
+      - 何かしらの言語を使ったチャット作る
 
 #### 運用性向上（ハード改善） - インフラの運用
 - コンテナ環境でアプリケーション開発・本番運用をしたい
@@ -143,9 +169,8 @@ https://github.com/setsumaru1992/internal_application_study_reports
     - 表題ママ
 
 #### そんな問題意識ないけど興味ある技術集
-- next.js
-- node.js
-  - node前提のことが多いから。エントリーポイントとかくらい知っておきたい。ライブラリの起点とかも
+- gRPC
+  - 使うかどうかは別として知っておきたい。使える技術かどうか吟味するために。
 
 
 ## 必要なこと（手をつける順）
@@ -161,8 +186,8 @@ https://github.com/setsumaru1992/internal_application_study_reports
 - [x] 最低限GraphQLの設定をしてフロントとバックの接合をさせる
 - [ ] 必要に応じて以下を設定
   - [x] TypeScript
-  - [ ] next.js
-  - [ ] node.jsでhelloWorldライブラリ作成
+  - [x] next.js
+  - [x] node.js~~でhelloWorldライブラリ作成~~
   - [ ] OpenAPIを使用したスキーマ駆動設計
   - [ ] unicorn
   - [ ] dcron

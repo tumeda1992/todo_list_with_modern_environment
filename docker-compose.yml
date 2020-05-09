@@ -9,11 +9,20 @@ services:
     volumes:
       - ./todo_list_application:/root/todo_list_application
 
-  todo_app_view:
-    container_name: todo_view
-    build: ./todo_list_view
-    command: ". /root/todo_list_view/entrypoint.sh"
+  # todo_app_view:
+  #   container_name: todo_view
+  #   build: ./todo_list_view
+  #   command: ". /root/todo_list_view/entrypoint.sh"
+  #   ports:
+  #     - "30419:30419"
+  #   volumes:
+  #     - ./todo_list_view:/root/todo_list_view
+  
+  todo_app_next:
+    container_name: todo_next
+    build: ./todo_list_next
+    command: "/root/todo_list_next/entrypoint.sh"
     ports:
-      - "30419:30419"
+      - "30504:30504"
     volumes:
-      - ./todo_list_view:/root/todo_list_view
+      - ./todo_list_next:/root/todo_list_next
