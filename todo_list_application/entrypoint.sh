@@ -11,4 +11,6 @@ pre_process="$(ps -ef |grep ":$port" |grep -v "grep" |awk '{print $2}')"
 kill -9 $pre_process
 rails s -p $port -b "0.0.0.0" &
 
-tail -f "log/development.log"
+logfile="log/development.log"
+touch $logfile # 起動時はないため明示的に作成
+tail -f $logfile
