@@ -12,3 +12,9 @@
         - [実装例(python)](https://qiita.com/rotelstift/items/7dafcdcae3ca18b65b26)
     - docker配備PC内のchromeを使う
       - [実装例Qiita](https://qiita.com/nullnull/items/61dae392f853f260cfb0)([Dockerfile](https://github.com/nullnull/scraping_sample/blob/master/Dockerfile))
+- 入れてみる
+  - [参考実装](https://qiita.com/niya1123/items/6cc970b3aa8f94ce2909)
+  - 使うdockerイメージ
+    - [github](https://github.com/SeleniumHQ/docker-selenium)
+    - [dockerhub](https://hub.docker.com/u/selenium)
+  - [remoteでの指定の仕方](https://www.selenium.dev/selenium/docs/api/rb/Selenium/WebDriver.html)
