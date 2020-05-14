@@ -37,6 +37,17 @@
   - nextに限らないけど
     - `yarn install sass`で`module.scss`とかを使ったスタイリングができる
 
+# アプリへの適用時のいろいろ
+- with-apolloのテンプレートを使用しているので、以下はそれに関連したぼやきの可能性が高い
+- withApollo関数について
+  - ページだけに使うものなのか、全部に使って良いものなのかわからない。
+  - `getInitialProps`, `getStaticProps`,`getServerSideProps` の使い分けがわからない
+    - 基本ドキュメント
+      - [それぞれの型](https://nextjs.org/docs/basic-features/typescript#pages)
+    - withApolloを使った場合、getServerSidePropsを使うとgetInitialPropsと併用させるなと怒られる。withApolloの実装を見ると、getInitialPropsがなかった場合独自定義してる
+    - ドキュメント([これ](https://nextjs.org/docs/api-reference/data-fetching/getInitialProps#typescript)の冒頭)を見る限り、3関数は並列であり、getInitialPropsは非推奨らしい。
+    - withApolloにgetServerSidePropsの記述があることから、withApolloが古いわけではない。そのため、`ssr:true`を書かなければgetInitialPropsが使われないから、ssrオプションをfalseにしてgetServerSidePropsを使おう
+
 # 参考コード
 ## シンプルnextアプリのpackage.json
 ```json
