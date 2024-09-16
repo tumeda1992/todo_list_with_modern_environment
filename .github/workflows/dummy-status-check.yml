@@ -3,7 +3,7 @@ name: Dummy Status Check
 on: [pull_request]
 
 jobs:
-  dummy-check:
+  dummy-status-check:
     runs-on: ubuntu-latest
     steps:
       - name: Run dummy check

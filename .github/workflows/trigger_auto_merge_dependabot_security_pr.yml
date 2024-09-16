@@ -1,4 +1,4 @@
-name: Auto Merge Dependabot
+name: trigger auto merge dependabot security pr
 on:
   pull_request:
     types:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   auto-merge:
-    if: github.event.label.name == 'automerge'
+    if: github.event.label.name == 'dependabot-security-patch'
     runs-on: ubuntu-latest
     steps:
       - name: Auto merge Dependabot PRs
