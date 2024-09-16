@@ -1,0 +1,10 @@
+name: Dummy Status Check
+
+on: [pull_request]
+
+jobs:
+  dummy-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run dummy check
+        run: echo 1
