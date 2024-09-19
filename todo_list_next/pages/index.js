@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
-import fetch from 'node-fetch'
 
 const Home = ({ content }) => {
   const pids = ['id1', 'id2', 'id3']
@@ -18,7 +17,7 @@ const Home = ({ content }) => {
                 href="/post/[pid]/[name]" // 見るjsファイル 
                 as={`/post/${pid}/hoge?param=k`} // パス
               >
-              <a>Post {pid}</a>
+                Post {pid}
               </Link>
             </div>
           ))

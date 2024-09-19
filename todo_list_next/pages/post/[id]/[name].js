@@ -10,7 +10,7 @@ export default () => {
     <React.Fragment>
       <p>Post({id}) : {name} (param: {param})</p>
       <Link href="/">
-        <a>home</a>
+        home
       </Link>
     </React.Fragment>
   )
