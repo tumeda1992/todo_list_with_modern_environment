@@ -2,8 +2,7 @@
 # コンテナ起動 `docker run -it todo_app`
 # (引数面倒くさいからdocker composeにする)
 
-# イメージ作成の初期設定
-FROM ruby:2.7.1
+FROM ruby:3.3.5
 # rubyのデフォルトCMDのirbを上書き
 CMD [ "/bin/bash" ]
 
