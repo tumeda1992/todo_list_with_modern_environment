@@ -24,7 +24,8 @@ WORKDIR $apppath
 # COPY ./ .
 
 # 必要要件としてはGemfileだけだけど、勝手なバージョンアップの弊害も踏まえ、実際にインストールしたバージョンも固定しておきたいのでlockもコピー
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile  ./
+COPY Gemfile.lock ./
 RUN bundle install
 
 # EXPOSEコマンドはこのポートを開けるという宣言で何かするというわけではないので不要
