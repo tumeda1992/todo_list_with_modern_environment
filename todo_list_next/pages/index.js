@@ -35,7 +35,7 @@ const Home = ({ content }) => {
 const getServerSideProps = async ({ context }) =>  {
   const res = await fetch('http://todo_api:30418/hello')
   const json = await res.json()
-  return { content: json.content }
+  return { props: { content: json.content } }
 }
 export { getServerSideProps }
 
