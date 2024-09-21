@@ -4,9 +4,9 @@
 
 FROM ruby:3.3.5
 # rubyのデフォルトCMDのirbを上書き
-CMD [ "/bin/bash" ]
+#CMD [ "/bin/bash" ]
 
-ENV LANG C.UTF-8
+ENV LANG=C.UTF-8
 
 
 # アプリケーション用のインフラ設定
@@ -19,16 +19,15 @@ ARG apppath="/root/$appname"
 #  && cd $apppath
 WORKDIR $apppath
 
-# docker-composeでコンテナ作成時のマウント設定をすることで以下コードを代替
-# COPY ./ .
+# docker-composeでコンテナ作成時のマウント設定をすることで代替可能だが、
+# fargateのようにイメージ時点でソースコードを含めなければならないケースのため
+COPY ./ .
 
-# 必要要件としてはGemfileだけだけど、勝手なバージョンアップの弊害も踏まえ、実際にインストールしたバージョンも固定しておきたいのでlockもコピー
-COPY Gemfile  ./
-COPY Gemfile.lock ./
+#COPY Gemfile  ./
+#COPY Gemfile.lock ./
 RUN bundle install
 
-# EXPOSEコマンドはこのポートを開けるという宣言で何かするというわけではないので不要
-# ARG port="3001"
-# EXPOSE $port
-
+ENV PORT=30418
+EXPOSE $PORT
+COPY entrypoint.sh ./
 CMD [ "./entrypoint.sh" ]
