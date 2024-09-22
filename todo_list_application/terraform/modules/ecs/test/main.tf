@@ -15,3 +15,7 @@ module "ecs" {
   vpc_id = module.network.vpc_id
   subnet_ids = module.network.subnet_ids
 }
+
+output "ecs_task_public_ip" {
+  value = module.ecs.ecs_task_public_ip
+}
