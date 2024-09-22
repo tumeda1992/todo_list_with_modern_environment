@@ -1,23 +1,36 @@
-resource "aws_vpc" "main" {
-  cidr_block = "10.0.0.0/16"
+terraform {
+  required_version = ">= 1.0.0, < 2.0.0"
 
-  tags = {
-    Name = "main-vpc"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
   }
 }
 
+locals {
+  vpc_id = module.network.vpc_id
+}
+
+module "network" {
+  source = "../../../../terraform/global/network/modules"
+}
+
 resource "aws_subnet" "main" {
-  vpc_id            = aws_vpc.main.id
+  vpc_id            = local.vpc_id
   cidr_block        = "10.0.1.0/24"
   availability_zone = "ap-northeast-1a"
 
   tags = {
     Name = "main-subnet"
   }
+
+  depends_on = [module.network]
 }
 
 resource "aws_internet_gateway" "main" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = local.vpc_id
 
   tags = {
     Name = "main-igw"
@@ -25,7 +38,7 @@ resource "aws_internet_gateway" "main" {
 }
 
 resource "aws_route_table" "main" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = local.vpc_id
 
   route {
     cidr_block = "0.0.0.0/0"
@@ -43,7 +56,7 @@ resource "aws_route_table_association" "main" {
 }
 
 output "vpc_id" {
-  value       = aws_vpc.main.id
+  value       = local.vpc_id
 }
 
 output "subnet_ids" {
