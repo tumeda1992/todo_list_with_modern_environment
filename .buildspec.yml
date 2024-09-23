@@ -1,0 +1,26 @@
+# backendはGithubActionでイメージ更新
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - REGISTRY_URI=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com
+      - REPOSITORY_URI=${REGISTRY_URI}/${ECR_REPOSITORY}
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin ${REGISTRY_URI}
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker build -t $REPOSITORY_URI:latest ./todo_list_next
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:latest
+  post_build:
+    commands:
+      - echo Pushing the Docker image...
+      - docker push $REPOSITORY_URI:latest
+      - echo Build completed on `date`
+
+env:
+  variables:
+    ECR_REPOSITORY: "todo_app_front"
+    AWS_DEFAULT_REGION: "ap-northeast-1"
