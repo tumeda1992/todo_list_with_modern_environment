@@ -10,7 +10,7 @@ terraform {
 }
 
 output "cluster_name" {
-  value = "fargate-cluster"
+  value = "todolist_cluster"
 }
 
 output "ecs_task_execution_iam_role_name" {

@@ -20,3 +20,11 @@ resource "aws_vpc" "new_vpc" {
     Name = module.values.vpc_name
   }
 }
+
+resource "aws_internet_gateway" "main" {
+  vpc_id = aws_vpc.new_vpc.id
+
+  tags = {
+    Name = "main-igw"
+  }
+}

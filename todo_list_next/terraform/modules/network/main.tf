@@ -17,13 +17,14 @@ module "network" {
   source = "../../../../terraform/global/network/modules"
 }
 
+# 一旦backendとサブネットを別に立てるけど、通信や合理性の観点からglobalに移して1つにしそう
 resource "aws_subnet" "main" {
   vpc_id            = local.vpc_id
-  cidr_block        = "10.0.1.0/24"
+  cidr_block        = "10.0.2.0/24"
   availability_zone = "ap-northeast-1a"
 
   tags = {
-    Name = "todolist-backend-subnet"
+    Name = "todolist-frontend-subnet"
   }
 }
 
@@ -36,7 +37,7 @@ resource "aws_route_table" "main" {
   }
 
   tags = {
-    Name = "todolist-backend-route-table"
+    Name = "todolist-frontend-route-table"
   }
 }
 

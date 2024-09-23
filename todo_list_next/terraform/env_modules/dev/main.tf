@@ -19,5 +19,6 @@ module "network" {
 #   source = "../../modules/ecs"
 #
 #   ecr_registry_name = var.ecr_registry_name
+#   vpc_id = module.network.vpc_id
 #   subnet_ids = module.network.subnet_ids
 # }

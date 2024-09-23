@@ -10,5 +10,9 @@ terraform {
 }
 
 output "vpc_name" {
-  value = "main-vpc"
+  value = "todolist-vpc"
+}
+
+output "igw_name" {
+  value = "todolist-igw"
 }
