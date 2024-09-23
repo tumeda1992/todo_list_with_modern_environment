@@ -1,3 +1,4 @@
+// このディレクトリで `go test -v -timeout 30m`
 package test
 
 import (

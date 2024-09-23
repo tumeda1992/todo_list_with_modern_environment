@@ -28,3 +28,8 @@ variable "memory_per_task" {
   type = number
   default = 1024
 }
+
+variable "skip_displaying_ip" {
+  type    = bool
+  default = false
+}

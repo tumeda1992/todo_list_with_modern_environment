@@ -117,6 +117,7 @@ resource "aws_security_group" "main" {
 }
 
 module "fetch_ip_address_of_task" {
+  count = var.skip_displaying_ip ? 0 : 1
   source = "./fetch_ip_address_of_task"
 
   ecs_cluster_id = module.global_ecs.ecs_cluster_id
@@ -124,5 +125,5 @@ module "fetch_ip_address_of_task" {
 }
 
 output "ecs_task_public_ip" {
-  value = module.fetch_ip_address_of_task.ecs_task_public_ip
+  value = var.skip_displaying_ip ? "(skip)" : module.fetch_ip_address_of_task[0].ecs_task_public_ip
 }

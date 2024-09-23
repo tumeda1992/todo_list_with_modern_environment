@@ -1,6 +1,11 @@
 variable "ecr_registry_name" { type = string }
 variable "subnet_ids" { type = list(string) }
 
+variable "skip_displaying_ip" {
+  type = bool
+  default = false
+}
+
 terraform {
   required_version = ">= 1.0.0, < 2.0.0"
 
