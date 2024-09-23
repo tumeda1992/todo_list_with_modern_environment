@@ -12,10 +12,17 @@ terraform {
   }
 }
 
-module "ecs" {
-  source = "../../../../terraform/shared_abstruct_modules/ecs"
+module "values" {
+  source = "../../../../terraform/global/values"
+}
 
-  ecr_registry_name = var.ecr_registry_name
+module "ecs" {
+  source = "../../../../terraform/shared_abstract_modules/ecs"
+
+  service_name = "${module.values.appname}_backend"
+  docker_image_name = "${var.ecr_registry_name}/todo_app_back:latest"
+  application_port = 30418
+  healthcheck_url = "http://localhost:30418/hello"
   subnet_ids = var.subnet_ids
 }
 

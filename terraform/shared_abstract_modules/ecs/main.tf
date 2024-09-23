@@ -1,10 +1,3 @@
-variable "ecr_registry_name" { type = string }
-variable "subnet_ids" { type = list(string) }
-
-locals {
-  application_port = 30418
-}
-
 terraform {
   required_version = ">= 1.0.0, < 2.0.0"
 
@@ -24,22 +17,25 @@ module "global_ecs" {
   source = "../../global/ecs/modules"
 }
 
+locals {
+  application_port = var.application_port
+}
+
 resource "aws_ecs_task_definition" "app" {
-  family                   = "fargate-task"
-  #   family                   = "sample_todo_list"
+  family                   = "${var.service_name}_task"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
-  cpu                      = "512"    # 1 vCPU
-  memory                   = "1024"    # 512MB
+  cpu                      = var.total_cpu
+  memory                   = var.total_memory
   execution_role_arn       = module.global_ecs.ecs_task_execution_iam_role_arn
   runtime_platform {
-    operating_system_family = "LINUX"                 # OSの設定 (LINUX)
-    cpu_architecture        = "ARM64"                 # アーキテクチャの設定 (ARM64)
+    operating_system_family = "LINUX"
+    cpu_architecture        = var.cpu_architecture
   }
 
   container_definitions = jsonencode([{
-    name  = "backend_todo_app"
-    image = "${var.ecr_registry_name}/todo_app_back:latest"
+    name  = var.service_name
+    image = var.docker_image_name
     essential = true
     portMappings = [{
       containerPort = local.application_port
@@ -57,10 +53,10 @@ resource "aws_ecs_task_definition" "app" {
         "max-buffer-size"       = "25m"                  # 最大バッファサイズ
       }
     }
-    cpu    = 512   # このコンテナのCPU制限（vCPUの1/4）
-    memory = 1024   # このコンテナのメモリ制限（512MB）
+    cpu    = var.cpu_per_task
+    memory = var.memory_per_task
     healthCheck = {
-      command     = ["CMD-SHELL", "curl -f http://localhost:30418/hello || exit 1"]
+      command     = ["CMD-SHELL", "curl -f ${var.healthcheck_url} || exit 1"]
       interval    = 30  # ヘルスチェックの間隔（秒）
       timeout     = 5   # タイムアウト（秒）
       retries     = 3   # リトライ回数
@@ -70,8 +66,7 @@ resource "aws_ecs_task_definition" "app" {
 }
 
 resource "aws_ecs_service" "app" {
-  name            = "fargate-service"
-  #   name            = "sample_todo_list_service"
+  name            = "${var.service_name}-service"
   cluster         = module.global_ecs.ecs_cluster_id
   task_definition = aws_ecs_task_definition.app.arn
   desired_count   = 1

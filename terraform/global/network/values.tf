@@ -9,10 +9,14 @@ terraform {
   }
 }
 
+module "global_values" {
+  source = "../values"
+}
+
 output "vpc_name" {
-  value = "todolist-vpc"
+  value = "${module.global_values.appname}-vpc"
 }
 
 output "igw_name" {
-  value = "todolist-igw"
+  value = "main-igw"
 }

@@ -9,8 +9,12 @@ terraform {
   }
 }
 
+module "global_values" {
+  source = "../values"
+}
+
 output "cluster_name" {
-  value = "todolist_cluster"
+  value = "${module.global_values.appname}_cluster"
 }
 
 output "ecs_task_execution_iam_role_name" {
