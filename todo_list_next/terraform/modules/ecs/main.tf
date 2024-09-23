@@ -1,6 +1,11 @@
 variable "ecr_registry_name" { type = string }
 variable "subnet_ids" { type = list(string) }
 
+variable "skip_displaying_ip" {
+  type = bool
+  default = false
+}
+
 terraform {
   required_version = ">= 1.0.0, < 2.0.0"
 
@@ -24,6 +29,7 @@ module "ecs" {
   application_port = 30504
   healthcheck_url = "http://localhost:30504/api/healthcheck"
   subnet_ids = var.subnet_ids
+  skip_displaying_ip = var.skip_displaying_ip
 }
 
 output "ecs_task_public_ip" {

@@ -1,5 +1,10 @@
 variable "ecr_registry_name" { type = string }
 
+variable "skip_displaying_ip" {
+  type = bool
+  default = false
+}
+
 provider "aws" {
   region = "ap-northeast-1"
 }
@@ -19,6 +24,7 @@ module "ecs" {
 
   ecr_registry_name = var.ecr_registry_name
   subnet_ids = module.network.subnet_ids
+  skip_displaying_ip = var.skip_displaying_ip
 }
 
 output "ecs_task_public_ip" {
