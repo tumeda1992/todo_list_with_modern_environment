@@ -22,7 +22,7 @@ module "ecs" {
   service_name = "${module.values.appname}_frontend"
   docker_image_name = "${var.ecr_registry_name}/todo_app_front:latest"
   application_port = 30504
-  healthcheck_url = "http://localhost:30504/post/id2/hoge?param=k" # TODO: 専用URL作成
+  healthcheck_url = "http://localhost:30504/api/healthcheck"
   subnet_ids = var.subnet_ids
 }
 

@@ -22,7 +22,7 @@ module "ecs" {
   service_name = "${module.values.appname}_backend"
   docker_image_name = "${var.ecr_registry_name}/todo_app_back:latest"
   application_port = 30418
-  healthcheck_url = "http://localhost:30418/hello"
+  healthcheck_url = "http://localhost:30418/healthcheck"
   subnet_ids = var.subnet_ids
 }
 

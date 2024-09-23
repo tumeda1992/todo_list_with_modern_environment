@@ -17,10 +17,10 @@ func TestEcsExample(t *testing.T) {
 	terraform.InitAndApply(t, opts)
 
 	ecs_task_public_ip := terraform.OutputRequired(t, opts, "ecs_task_public_ip")
-	url := fmt.Sprintf("http://%s:30418/hello", ecs_task_public_ip)
+	url := fmt.Sprintf("http://%s:30418/healthcheck", ecs_task_public_ip)
 
 	expectedStatusCode := 200
-	expectedBody := "{\"content\":\"hello\"}"
+	expectedBody := "{\"status\":\"success\"}"
 	maxRetries := 5
 	timeBetweenRetries := 30 * time.Second
 
