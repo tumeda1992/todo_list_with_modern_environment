@@ -31,4 +31,4 @@ jobs:
           REGISTORY=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
           IMAGE_WITH_TAG=${{ secrets.ECR_BACKEND_REPOSITORY }}:$IMAGE_TAG
           docker buildx create --use  # Docker Buildxを使用
-          docker buildx build --platform linux/amd64 -t $REGISTORY/$IMAGE_WITH_TAG ./todo_list_application --push
+          docker buildx build --platform linux/amd64,linux/arm64 -t $REGISTORY/$IMAGE_WITH_TAG ./todo_list_application --push
