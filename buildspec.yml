@@ -2,6 +2,13 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - echo "Installing necessary tools"
+      - curl -L https://github.com/docker/buildx/releases/download/v0.8.2/buildx-v0.8.2.linux-amd64 -o ~/.docker/cli-plugins/docker-buildx
+      - chmod +x ~/.docker/cli-plugins/docker-buildx
+      - docker buildx create --use
+
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
@@ -11,9 +18,10 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - echo Building the Docker image...
-      - docker build -t $REPOSITORY_URI:latest ./todo_list_next
-      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:latest
+      - IMAGE_TAG=latest
+      - REGISTRY=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com
+      - IMAGE_WITH_TAG=${ECR_BACKEND_REPOSITORY}:$IMAGE_TAG
+      - docker buildx build --platform linux/amd64,linux/arm64 -t $REGISTRY/$IMAGE_WITH_TAG ./todo_list_next --push
   post_build:
     commands:
       - echo Pushing the Docker image...
