@@ -22,13 +22,8 @@ phases:
       - echo Build started on `date`
       - IMAGE_TAG=latest
       - REGISTRY=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com
-      - IMAGE_WITH_TAG=${ECR_BACKEND_REPOSITORY}:$IMAGE_TAG
+      - IMAGE_WITH_TAG=${ECR_REPOSITORY}:$IMAGE_TAG
       - docker buildx build --platform linux/amd64,linux/arm64 -t $REGISTRY/$IMAGE_WITH_TAG ./todo_list_next --push
-  post_build:
-    commands:
-      - echo Pushing the Docker image...
-      - docker push $REPOSITORY_URI:latest
-      - echo Build completed on `date`
 
 env:
   variables:
