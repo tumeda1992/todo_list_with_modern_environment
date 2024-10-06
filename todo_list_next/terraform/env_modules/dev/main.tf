@@ -11,13 +11,8 @@ terraform {
   }
 }
 
-module "network" {
-  source = "../../modules/network"
-}
-
 module "ecs" {
   source = "../../modules/ecs"
 
   ecr_registry_name = var.ecr_registry_name
-  subnet_ids = module.network.subnet_ids
 }

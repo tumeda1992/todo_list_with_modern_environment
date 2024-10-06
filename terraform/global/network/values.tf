@@ -18,5 +18,17 @@ output "vpc_name" {
 }
 
 output "igw_name" {
-  value = "main-igw"
+  value = "${module.global_values.appname}-igw"
+}
+
+output "public_subnet_an1a_name" {
+  value = "${module.global_values.appname}-public-an1a-subnet"
+}
+
+output "private_subnet_an1a_name" {
+  value = "${module.global_values.appname}-private-an1a-subnet"
+}
+
+output "public_route_table_name" {
+  value = "${module.global_values.appname}-public-route-table"
 }

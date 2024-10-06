@@ -32,7 +32,7 @@ const Home = ({ content }) => {
 // Home.getInitialProps = async ({ req }) =>  {
 // const getStaticProp = async ({ req }) =>  {
 const getServerSideProps = async ({ context }) =>  {
-  const res = await fetch('http://todo_api:30418/hello')
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_ORIGIN}/hello`)
   const json = await res.json()
   return { props: { content: json.content } }
 }

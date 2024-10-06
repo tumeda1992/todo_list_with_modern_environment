@@ -31,6 +31,8 @@ services:
       - "30504:30504"
     volumes:
       - ./todo_list_next:/root/todo_list_next
+    environment:
+      - NEXT_PUBLIC_BACKEND_API_ORIGIN=http://todo_api:30418
   
 #  selenium-hub:
 #    image: selenium/hub:3.141.59-20200409
