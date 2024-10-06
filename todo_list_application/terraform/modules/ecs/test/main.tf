@@ -1,5 +1,6 @@
 variable "ecr_registry_name" { type = string }
 
+# terraform destroy -var "skip_displaying_ip=true"
 variable "skip_displaying_ip" {
   type = bool
   default = false

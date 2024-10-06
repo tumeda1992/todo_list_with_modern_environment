@@ -1,5 +1,10 @@
 variable "ecr_registry_name" { type = string }
 
+variable "skip_displaying_ip" {
+  type = bool
+  default = false
+}
+
 provider "aws" {
   region = "ap-northeast-1"
 }
@@ -13,6 +18,7 @@ module "backend" {
   depends_on = [module.global_bootstrap]
 
   ecr_registry_name = var.ecr_registry_name
+  skip_displaying_ip = var.skip_displaying_ip
 }
 
 module "frontend" {
@@ -20,5 +26,6 @@ module "frontend" {
   depends_on = [module.global_bootstrap]
 
   ecr_registry_name = var.ecr_registry_name
+  skip_displaying_ip = var.skip_displaying_ip
 }
 
