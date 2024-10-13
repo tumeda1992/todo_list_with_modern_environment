@@ -19,6 +19,7 @@ module "global_ecs" {
 
 locals {
   application_port = var.application_port
+  cloudwatch_log_group = "/ecs/fargate-task/${var.service_name}"
 }
 
 resource "aws_ecs_task_definition" "app" {
@@ -45,7 +46,7 @@ resource "aws_ecs_task_definition" "app" {
     logConfiguration = {
       logDriver = "awslogs"
       options = {
-        "awslogs-group"         = "/ecs/fargate-task"    # CloudWatch Logsのロググループ
+        "awslogs-group"         = local.cloudwatch_log_group
         "awslogs-region"        = "ap-northeast-1"       # リージョン
         "awslogs-stream-prefix" = "ecs"                  # ストリームのプレフィックス
         "awslogs-create-group"  = "true"                 # ロググループの自動作成
@@ -63,6 +64,11 @@ resource "aws_ecs_task_definition" "app" {
       startPeriod = 60  # 起動後の初回ヘルスチェックまでの待機時間（秒）
     }
   }])
+}
+
+resource "aws_cloudwatch_log_group" "ecs_fargate" {
+  name              = local.cloudwatch_log_group
+  retention_in_days = 7
 }
 
 resource "aws_ecs_service" "app" {

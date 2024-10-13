@@ -15,6 +15,10 @@ module "dev" {
   ecr_registry_name = var.ecr_registry_name
 }
 
-output "alb_dns_name" {
-  value = module.dev.alb_dns_name
+output "root_url" {
+  value = module.dev.root_url
+}
+
+output "frontend_url" {
+  value = "${module.dev.root_url}/api/healthcheck"
 }

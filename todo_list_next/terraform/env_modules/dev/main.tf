@@ -11,16 +11,8 @@ terraform {
   }
 }
 
-module "values" {
-  source = "../../../../terraform/global/values"
-}
-
 module "alb" {
   source = "../../modules/alb"
-
-  service_name = module.values.appname
-  healthcheck_path = "/api/healthcheck"
-  lb_target_port = 30504
 }
 
 module "ecs" {
@@ -32,6 +24,6 @@ module "ecs" {
   skip_displaying_ip = true
 }
 
-output "alb_dns_name" {
-  value = module.alb.alb_dns_name
+output "root_url" {
+  value = "http://${module.alb.alb_dns_name}"
 }
