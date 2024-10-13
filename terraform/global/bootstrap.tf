@@ -15,5 +15,6 @@ module "network" {
 
 module "ecs" {
   source = "./ecs/bootstrap"
+  depends_on = [module.network]
 }
 

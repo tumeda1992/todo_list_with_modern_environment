@@ -1,0 +1,2862 @@
+{
+  "version": 4,
+  "terraform_version": "1.9.4",
+  "serial": 2247,
+  "lineage": "3660655d-248a-b4d8-46a3-a639a6fff275",
+  "outputs": {
+    "alb_dns_name": {
+      "value": "todolist-alb-1205775953.ap-northeast-1.elb.amazonaws.com",
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "module": "module.dev.module.alb",
+      "mode": "managed",
+      "type": "aws_lb",
+      "name": "main",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "access_logs": [
+              {
+                "bucket": "",
+                "enabled": false,
+                "prefix": ""
+              }
+            ],
+            "arn": "arn:aws:elasticloadbalancing:ap-northeast-1:241875560804:loadbalancer/app/todolist-alb/5be3ea723d42e0c2",
+            "arn_suffix": "app/todolist-alb/5be3ea723d42e0c2",
+            "client_keep_alive": 3600,
+            "connection_logs": [
+              {
+                "bucket": "",
+                "enabled": false,
+                "prefix": ""
+              }
+            ],
+            "customer_owned_ipv4_pool": "",
+            "desync_mitigation_mode": "defensive",
+            "dns_name": "todolist-alb-1205775953.ap-northeast-1.elb.amazonaws.com",
+            "dns_record_client_routing_policy": null,
+            "drop_invalid_header_fields": false,
+            "enable_cross_zone_load_balancing": true,
+            "enable_deletion_protection": false,
+            "enable_http2": true,
+            "enable_tls_version_and_cipher_suite_headers": false,
+            "enable_waf_fail_open": false,
+            "enable_xff_client_port": false,
+            "enforce_security_group_inbound_rules_on_private_link_traffic": "",
+            "id": "arn:aws:elasticloadbalancing:ap-northeast-1:241875560804:loadbalancer/app/todolist-alb/5be3ea723d42e0c2",
+            "idle_timeout": 60,
+            "internal": false,
+            "ip_address_type": "ipv4",
+            "load_balancer_type": "application",
+            "name": "todolist-alb",
+            "name_prefix": "",
+            "preserve_host_header": false,
+            "security_groups": [
+              "sg-0fd2b1552072e9d78"
+            ],
+            "subnet_mapping": [
+              {
+                "allocation_id": "",
+                "ipv6_address": "",
+                "outpost_id": "",
+                "private_ipv4_address": "",
+                "subnet_id": "subnet-0e43118a913be8aaf"
+              },
+              {
+                "allocation_id": "",
+                "ipv6_address": "",
+                "outpost_id": "",
+                "private_ipv4_address": "",
+                "subnet_id": "subnet-0fa1f19acc1c55a9a"
+              }
+            ],
+            "subnets": [
+              "subnet-0e43118a913be8aaf",
+              "subnet-0fa1f19acc1c55a9a"
+            ],
+            "tags": {},
+            "tags_all": {},
+            "timeouts": null,
+            "vpc_id": "vpc-0b24c0cf9ca3538f1",
+            "xff_header_processing_mode": "append",
+            "zone_id": "Z14GRHDCWA56QT"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6NjAwMDAwMDAwMDAwLCJ1cGRhdGUiOjYwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.dev.module.alb.aws_security_group.alb_sg",
+            "module.dev.module.alb.module.global_network.data.aws_subnets.public",
+            "module.dev.module.alb.module.global_network.data.aws_subnets.public2",
+            "module.dev.module.alb.module.global_network.data.aws_vpcs.main",
+            "module.global_bootstrap.module.ecs.aws_cloudwatch_log_group.vpc_endpoint_logs",
+            "module.global_bootstrap.module.ecs.aws_ecs_cluster.new_cluster",
+            "module.global_bootstrap.module.ecs.aws_flow_log.vpc_endpoint_flow_log",
+            "module.global_bootstrap.module.ecs.aws_iam_policy.ecs_task_execution_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_policy.vpc_endpoint_logs_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_role.ecs_task_execution",
+            "module.global_bootstrap.module.ecs.aws_iam_role.vpc_endpoint_logs_role",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.ecs_task_cloudwatch_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.ecs_task_execution_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.vpc_endpoint_logs_role_attachment",
+            "module.global_bootstrap.module.ecs.aws_security_group.ecr_endpoint_sg",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.cloudwatch_logs",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.ecr_api",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.ecr_dkr",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.s3",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_route_tables.private_rt",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.private",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.private2",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.public",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.public2",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_vpcs.main",
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_1",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_2",
+            "module.global_bootstrap.module.network.aws_route_table_association.public",
+            "module.global_bootstrap.module.network.aws_route_table_association.public2",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.alb",
+      "mode": "managed",
+      "type": "aws_lb_listener",
+      "name": "http",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "alpn_policy": null,
+            "arn": "arn:aws:elasticloadbalancing:ap-northeast-1:241875560804:listener/app/todolist-alb/5be3ea723d42e0c2/0327b8ff9a5bd42b",
+            "certificate_arn": null,
+            "default_action": [
+              {
+                "authenticate_cognito": [],
+                "authenticate_oidc": [],
+                "fixed_response": [],
+                "forward": [],
+                "order": 1,
+                "redirect": [],
+                "target_group_arn": "arn:aws:elasticloadbalancing:ap-northeast-1:241875560804:targetgroup/todolist-lb-tg/35c78dba36b5122e",
+                "type": "forward"
+              }
+            ],
+            "id": "arn:aws:elasticloadbalancing:ap-northeast-1:241875560804:listener/app/todolist-alb/5be3ea723d42e0c2/0327b8ff9a5bd42b",
+            "load_balancer_arn": "arn:aws:elasticloadbalancing:ap-northeast-1:241875560804:loadbalancer/app/todolist-alb/5be3ea723d42e0c2",
+            "mutual_authentication": [],
+            "port": 80,
+            "protocol": "HTTP",
+            "ssl_policy": "",
+            "tags": {},
+            "tags_all": {},
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsInVwZGF0ZSI6MzAwMDAwMDAwMDAwfX0=",
+          "dependencies": [
+            "module.dev.module.alb.aws_lb.main",
+            "module.dev.module.alb.aws_lb_target_group.main",
+            "module.dev.module.alb.aws_security_group.alb_sg",
+            "module.dev.module.alb.module.global_network.data.aws_subnets.public",
+            "module.dev.module.alb.module.global_network.data.aws_subnets.public2",
+            "module.dev.module.alb.module.global_network.data.aws_vpcs.main",
+            "module.global_bootstrap.module.ecs.aws_cloudwatch_log_group.vpc_endpoint_logs",
+            "module.global_bootstrap.module.ecs.aws_ecs_cluster.new_cluster",
+            "module.global_bootstrap.module.ecs.aws_flow_log.vpc_endpoint_flow_log",
+            "module.global_bootstrap.module.ecs.aws_iam_policy.ecs_task_execution_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_policy.vpc_endpoint_logs_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_role.ecs_task_execution",
+            "module.global_bootstrap.module.ecs.aws_iam_role.vpc_endpoint_logs_role",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.ecs_task_cloudwatch_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.ecs_task_execution_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.vpc_endpoint_logs_role_attachment",
+            "module.global_bootstrap.module.ecs.aws_security_group.ecr_endpoint_sg",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.cloudwatch_logs",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.ecr_api",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.ecr_dkr",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.s3",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_route_tables.private_rt",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.private",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.private2",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.public",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.public2",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_vpcs.main",
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_1",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_2",
+            "module.global_bootstrap.module.network.aws_route_table_association.public",
+            "module.global_bootstrap.module.network.aws_route_table_association.public2",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.alb",
+      "mode": "managed",
+      "type": "aws_lb_target_group",
+      "name": "main",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:elasticloadbalancing:ap-northeast-1:241875560804:targetgroup/todolist-lb-tg/35c78dba36b5122e",
+            "arn_suffix": "targetgroup/todolist-lb-tg/35c78dba36b5122e",
+            "connection_termination": null,
+            "deregistration_delay": "300",
+            "health_check": [
+              {
+                "enabled": true,
+                "healthy_threshold": 3,
+                "interval": 30,
+                "matcher": "200",
+                "path": "/api/healthcheck",
+                "port": "traffic-port",
+                "protocol": "HTTP",
+                "timeout": 5,
+                "unhealthy_threshold": 2
+              }
+            ],
+            "id": "arn:aws:elasticloadbalancing:ap-northeast-1:241875560804:targetgroup/todolist-lb-tg/35c78dba36b5122e",
+            "ip_address_type": "ipv4",
+            "lambda_multi_value_headers_enabled": false,
+            "load_balancer_arns": [
+              "arn:aws:elasticloadbalancing:ap-northeast-1:241875560804:loadbalancer/app/todolist-alb/5be3ea723d42e0c2"
+            ],
+            "load_balancing_algorithm_type": "round_robin",
+            "load_balancing_anomaly_mitigation": "off",
+            "load_balancing_cross_zone_enabled": "use_load_balancer_configuration",
+            "name": "todolist-lb-tg",
+            "name_prefix": "",
+            "port": 30504,
+            "preserve_client_ip": null,
+            "protocol": "HTTP",
+            "protocol_version": "HTTP1",
+            "proxy_protocol_v2": false,
+            "slow_start": 0,
+            "stickiness": [
+              {
+                "cookie_duration": 86400,
+                "cookie_name": "",
+                "enabled": false,
+                "type": "lb_cookie"
+              }
+            ],
+            "tags": {},
+            "tags_all": {},
+            "target_failover": [
+              {
+                "on_deregistration": null,
+                "on_unhealthy": null
+              }
+            ],
+            "target_group_health": [
+              {
+                "dns_failover": [
+                  {
+                    "minimum_healthy_targets_count": "1",
+                    "minimum_healthy_targets_percentage": "off"
+                  }
+                ],
+                "unhealthy_state_routing": [
+                  {
+                    "minimum_healthy_targets_count": 1,
+                    "minimum_healthy_targets_percentage": "off"
+                  }
+                ]
+              }
+            ],
+            "target_health_state": [
+              {
+                "enable_unhealthy_connection_termination": null,
+                "unhealthy_draining_interval": null
+              }
+            ],
+            "target_type": "ip",
+            "vpc_id": "vpc-0b24c0cf9ca3538f1"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.dev.module.alb.module.global_network.data.aws_vpcs.main",
+            "module.global_bootstrap.module.ecs.aws_cloudwatch_log_group.vpc_endpoint_logs",
+            "module.global_bootstrap.module.ecs.aws_ecs_cluster.new_cluster",
+            "module.global_bootstrap.module.ecs.aws_flow_log.vpc_endpoint_flow_log",
+            "module.global_bootstrap.module.ecs.aws_iam_policy.ecs_task_execution_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_policy.vpc_endpoint_logs_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_role.ecs_task_execution",
+            "module.global_bootstrap.module.ecs.aws_iam_role.vpc_endpoint_logs_role",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.ecs_task_cloudwatch_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.ecs_task_execution_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.vpc_endpoint_logs_role_attachment",
+            "module.global_bootstrap.module.ecs.aws_security_group.ecr_endpoint_sg",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.cloudwatch_logs",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.ecr_api",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.ecr_dkr",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.s3",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_route_tables.private_rt",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.private",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.private2",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.public",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.public2",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_vpcs.main",
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_1",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_2",
+            "module.global_bootstrap.module.network.aws_route_table_association.public",
+            "module.global_bootstrap.module.network.aws_route_table_association.public2",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.alb",
+      "mode": "managed",
+      "type": "aws_security_group",
+      "name": "alb_sg",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-1:241875560804:security-group/sg-0fd2b1552072e9d78",
+            "description": "Managed by Terraform",
+            "egress": [
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "",
+                "from_port": 0,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "-1",
+                "security_groups": [],
+                "self": false,
+                "to_port": 0
+              }
+            ],
+            "id": "sg-0fd2b1552072e9d78",
+            "ingress": [
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "",
+                "from_port": 80,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [],
+                "self": false,
+                "to_port": 80
+              }
+            ],
+            "name": "terraform-2024101306102700250000000d",
+            "name_prefix": "terraform-",
+            "owner_id": "241875560804",
+            "revoke_rules_on_delete": false,
+            "tags": {
+              "Name": "todolist-alb-sg"
+            },
+            "tags_all": {
+              "Name": "todolist-alb-sg"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-0b24c0cf9ca3538f1"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6OTAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0=",
+          "dependencies": [
+            "module.dev.module.alb.module.global_network.data.aws_vpcs.main",
+            "module.global_bootstrap.module.ecs.aws_cloudwatch_log_group.vpc_endpoint_logs",
+            "module.global_bootstrap.module.ecs.aws_ecs_cluster.new_cluster",
+            "module.global_bootstrap.module.ecs.aws_flow_log.vpc_endpoint_flow_log",
+            "module.global_bootstrap.module.ecs.aws_iam_policy.ecs_task_execution_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_policy.vpc_endpoint_logs_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_role.ecs_task_execution",
+            "module.global_bootstrap.module.ecs.aws_iam_role.vpc_endpoint_logs_role",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.ecs_task_cloudwatch_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.ecs_task_execution_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.vpc_endpoint_logs_role_attachment",
+            "module.global_bootstrap.module.ecs.aws_security_group.ecr_endpoint_sg",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.cloudwatch_logs",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.ecr_api",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.ecr_dkr",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.s3",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_route_tables.private_rt",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.private",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.private2",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.public",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.public2",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_vpcs.main",
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_1",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_2",
+            "module.global_bootstrap.module.network.aws_route_table_association.public",
+            "module.global_bootstrap.module.network.aws_route_table_association.public2",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.alb.module.global_network",
+      "mode": "data",
+      "type": "aws_route_tables",
+      "name": "private_rt",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-private-route-table"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "rtb-053a44f6e2db23cd6"
+            ],
+            "tags": null,
+            "timeouts": null,
+            "vpc_id": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.alb.module.global_network",
+      "mode": "data",
+      "type": "aws_subnets",
+      "name": "private",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-private-an1a-subnet"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "subnet-05d9353306ecc99ea"
+            ],
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.alb.module.global_network",
+      "mode": "data",
+      "type": "aws_subnets",
+      "name": "private2",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-private-an1c-subnet"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "subnet-0a8036313434a8cbd"
+            ],
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.alb.module.global_network",
+      "mode": "data",
+      "type": "aws_subnets",
+      "name": "public",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-public-an1a-subnet"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "subnet-0e43118a913be8aaf"
+            ],
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.alb.module.global_network",
+      "mode": "data",
+      "type": "aws_subnets",
+      "name": "public2",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-public-an1c-subnet"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "subnet-0fa1f19acc1c55a9a"
+            ],
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.alb.module.global_network",
+      "mode": "data",
+      "type": "aws_vpcs",
+      "name": "main",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-vpc"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "vpc-0b24c0cf9ca3538f1"
+            ],
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.ecs.module.ecs",
+      "mode": "managed",
+      "type": "aws_ecs_service",
+      "name": "app",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "alarms": [],
+            "capacity_provider_strategy": [],
+            "cluster": "arn:aws:ecs:ap-northeast-1:241875560804:cluster/todolist_cluster",
+            "deployment_circuit_breaker": [
+              {
+                "enable": true,
+                "rollback": true
+              }
+            ],
+            "deployment_controller": [
+              {
+                "type": "ECS"
+              }
+            ],
+            "deployment_maximum_percent": 200,
+            "deployment_minimum_healthy_percent": 100,
+            "desired_count": 1,
+            "enable_ecs_managed_tags": false,
+            "enable_execute_command": false,
+            "force_delete": null,
+            "force_new_deployment": null,
+            "health_check_grace_period_seconds": 0,
+            "iam_role": "/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS",
+            "id": "arn:aws:ecs:ap-northeast-1:241875560804:service/todolist_cluster/todolist_frontend-service",
+            "launch_type": "FARGATE",
+            "load_balancer": [
+              {
+                "container_name": "todolist_frontend",
+                "container_port": 30504,
+                "elb_name": "",
+                "target_group_arn": "arn:aws:elasticloadbalancing:ap-northeast-1:241875560804:targetgroup/todolist-lb-tg/35c78dba36b5122e"
+              }
+            ],
+            "name": "todolist_frontend-service",
+            "network_configuration": [
+              {
+                "assign_public_ip": false,
+                "security_groups": [
+                  "sg-077e45418436f3aa1"
+                ],
+                "subnets": [
+                  "subnet-05d9353306ecc99ea"
+                ]
+              }
+            ],
+            "ordered_placement_strategy": [],
+            "placement_constraints": [],
+            "platform_version": "LATEST",
+            "propagate_tags": "NONE",
+            "scheduling_strategy": "REPLICA",
+            "service_connect_configuration": [],
+            "service_registries": [],
+            "tags": {},
+            "tags_all": {},
+            "task_definition": "arn:aws:ecs:ap-northeast-1:241875560804:task-definition/todolist_frontend_task:28",
+            "timeouts": null,
+            "triggers": {},
+            "volume_configuration": [],
+            "wait_for_steady_state": false
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "module.dev.module.alb.aws_lb_target_group.main",
+            "module.dev.module.alb.aws_security_group.alb_sg",
+            "module.dev.module.alb.module.global_network.data.aws_vpcs.main",
+            "module.dev.module.ecs.module.ecs.aws_ecs_task_definition.app",
+            "module.dev.module.ecs.module.ecs.aws_security_group.main",
+            "module.dev.module.ecs.module.ecs.module.global_ecs.data.aws_ecs_cluster.main",
+            "module.dev.module.ecs.module.ecs.module.global_ecs.data.aws_iam_role.ecs_task_execution",
+            "module.dev.module.ecs.module.ecs.module.network.data.aws_vpcs.main",
+            "module.dev.module.ecs.module.global_network.data.aws_subnets.private",
+            "module.dev.module.ecs.module.global_network.data.aws_subnets.public",
+            "module.global_bootstrap.module.ecs.aws_cloudwatch_log_group.vpc_endpoint_logs",
+            "module.global_bootstrap.module.ecs.aws_ecs_cluster.new_cluster",
+            "module.global_bootstrap.module.ecs.aws_flow_log.vpc_endpoint_flow_log",
+            "module.global_bootstrap.module.ecs.aws_iam_policy.ecs_task_execution_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_policy.vpc_endpoint_logs_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_role.ecs_task_execution",
+            "module.global_bootstrap.module.ecs.aws_iam_role.vpc_endpoint_logs_role",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.ecs_task_cloudwatch_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.ecs_task_execution_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.vpc_endpoint_logs_role_attachment",
+            "module.global_bootstrap.module.ecs.aws_security_group.ecr_endpoint_sg",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.cloudwatch_logs",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.ecr_api",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.ecr_dkr",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.s3",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_route_tables.private_rt",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.private",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.private2",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.public",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.public2",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_vpcs.main",
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_1",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_2",
+            "module.global_bootstrap.module.network.aws_route_table_association.public",
+            "module.global_bootstrap.module.network.aws_route_table_association.public2",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.ecs.module.ecs",
+      "mode": "managed",
+      "type": "aws_ecs_task_definition",
+      "name": "app",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ecs:ap-northeast-1:241875560804:task-definition/todolist_frontend_task:28",
+            "arn_without_revision": "arn:aws:ecs:ap-northeast-1:241875560804:task-definition/todolist_frontend_task",
+            "container_definitions": "[{\"cpu\":512,\"environment\":[],\"essential\":true,\"healthCheck\":{\"command\":[\"CMD-SHELL\",\"curl -f http://localhost:30504/api/healthcheck || exit 1\"],\"interval\":30,\"retries\":3,\"startPeriod\":60,\"timeout\":5},\"image\":\"241875560804.dkr.ecr.ap-northeast-1.amazonaws.com/todo_app_front:latest\",\"logConfiguration\":{\"logDriver\":\"awslogs\",\"options\":{\"mode\":\"non-blocking\",\"awslogs-create-group\":\"true\",\"max-buffer-size\":\"25m\",\"awslogs-region\":\"ap-northeast-1\",\"awslogs-stream-prefix\":\"ecs\",\"awslogs-group\":\"/ecs/fargate-task\"}},\"memory\":1024,\"mountPoints\":[],\"name\":\"todolist_frontend\",\"portMappings\":[{\"containerPort\":30504,\"hostPort\":30504,\"protocol\":\"tcp\"}],\"systemControls\":[],\"volumesFrom\":[]}]",
+            "cpu": "512",
+            "ephemeral_storage": [],
+            "execution_role_arn": "arn:aws:iam::241875560804:role/ecsTaskExecutionRoleeee",
+            "family": "todolist_frontend_task",
+            "id": "todolist_frontend_task",
+            "inference_accelerator": [],
+            "ipc_mode": "",
+            "memory": "1024",
+            "network_mode": "awsvpc",
+            "pid_mode": "",
+            "placement_constraints": [],
+            "proxy_configuration": [],
+            "requires_compatibilities": [
+              "FARGATE"
+            ],
+            "revision": 28,
+            "runtime_platform": [
+              {
+                "cpu_architecture": "ARM64",
+                "operating_system_family": "LINUX"
+              }
+            ],
+            "skip_destroy": false,
+            "tags": {},
+            "tags_all": {},
+            "task_role_arn": "",
+            "track_latest": false,
+            "volume": []
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ==",
+          "dependencies": [
+            "module.dev.module.ecs.module.ecs.module.global_ecs.data.aws_iam_role.ecs_task_execution",
+            "module.global_bootstrap.module.ecs.aws_cloudwatch_log_group.vpc_endpoint_logs",
+            "module.global_bootstrap.module.ecs.aws_ecs_cluster.new_cluster",
+            "module.global_bootstrap.module.ecs.aws_flow_log.vpc_endpoint_flow_log",
+            "module.global_bootstrap.module.ecs.aws_iam_policy.ecs_task_execution_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_policy.vpc_endpoint_logs_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_role.ecs_task_execution",
+            "module.global_bootstrap.module.ecs.aws_iam_role.vpc_endpoint_logs_role",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.ecs_task_cloudwatch_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.ecs_task_execution_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.vpc_endpoint_logs_role_attachment",
+            "module.global_bootstrap.module.ecs.aws_security_group.ecr_endpoint_sg",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.cloudwatch_logs",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.ecr_api",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.ecr_dkr",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.s3",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_route_tables.private_rt",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.private",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.private2",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.public",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.public2",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_vpcs.main",
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_1",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_2",
+            "module.global_bootstrap.module.network.aws_route_table_association.public",
+            "module.global_bootstrap.module.network.aws_route_table_association.public2",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.ecs.module.ecs",
+      "mode": "managed",
+      "type": "aws_security_group",
+      "name": "main",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-1:241875560804:security-group/sg-077e45418436f3aa1",
+            "description": "Managed by Terraform",
+            "egress": [
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "",
+                "from_port": 0,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "-1",
+                "security_groups": [],
+                "self": false,
+                "to_port": 0
+              }
+            ],
+            "id": "sg-077e45418436f3aa1",
+            "ingress": [
+              {
+                "cidr_blocks": [],
+                "description": "",
+                "from_port": 30504,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [
+                  "sg-0fd2b1552072e9d78"
+                ],
+                "self": false,
+                "to_port": 30504
+              }
+            ],
+            "name": "terraform-2024101306102991620000000e",
+            "name_prefix": "terraform-",
+            "owner_id": "241875560804",
+            "revoke_rules_on_delete": false,
+            "tags": {
+              "Name": "todolist_frontend-ecs-service-sg"
+            },
+            "tags_all": {
+              "Name": "todolist_frontend-ecs-service-sg"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-0b24c0cf9ca3538f1"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6OTAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0=",
+          "dependencies": [
+            "module.dev.module.alb.aws_security_group.alb_sg",
+            "module.dev.module.alb.module.global_network.data.aws_vpcs.main",
+            "module.dev.module.ecs.module.ecs.module.network.data.aws_vpcs.main",
+            "module.global_bootstrap.module.ecs.aws_cloudwatch_log_group.vpc_endpoint_logs",
+            "module.global_bootstrap.module.ecs.aws_ecs_cluster.new_cluster",
+            "module.global_bootstrap.module.ecs.aws_flow_log.vpc_endpoint_flow_log",
+            "module.global_bootstrap.module.ecs.aws_iam_policy.ecs_task_execution_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_policy.vpc_endpoint_logs_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_role.ecs_task_execution",
+            "module.global_bootstrap.module.ecs.aws_iam_role.vpc_endpoint_logs_role",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.ecs_task_cloudwatch_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.ecs_task_execution_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.global_bootstrap.module.ecs.aws_iam_role_policy_attachment.vpc_endpoint_logs_role_attachment",
+            "module.global_bootstrap.module.ecs.aws_security_group.ecr_endpoint_sg",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.cloudwatch_logs",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.ecr_api",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.ecr_dkr",
+            "module.global_bootstrap.module.ecs.aws_vpc_endpoint.s3",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_route_tables.private_rt",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.private",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.private2",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.public",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.public2",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_vpcs.main",
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_1",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_2",
+            "module.global_bootstrap.module.network.aws_route_table_association.public",
+            "module.global_bootstrap.module.network.aws_route_table_association.public2",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.ecs.module.ecs.module.global_ecs",
+      "mode": "data",
+      "type": "aws_ecs_cluster",
+      "name": "main",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ecs:ap-northeast-1:241875560804:cluster/todolist_cluster",
+            "cluster_name": "todolist_cluster",
+            "id": "arn:aws:ecs:ap-northeast-1:241875560804:cluster/todolist_cluster",
+            "pending_tasks_count": 0,
+            "registered_container_instances_count": 0,
+            "running_tasks_count": 1,
+            "service_connect_defaults": [],
+            "setting": [
+              {
+                "name": "containerInsights",
+                "value": "disabled"
+              }
+            ],
+            "status": "ACTIVE",
+            "tags": {}
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.ecs.module.ecs.module.global_ecs",
+      "mode": "data",
+      "type": "aws_iam_role",
+      "name": "ecs_task_execution",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::241875560804:role/ecsTaskExecutionRoleeee",
+            "assume_role_policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ecs-tasks.amazonaws.com\"},\"Action\":\"sts:AssumeRole\"}]}",
+            "create_date": "2024-10-13T06:09:43Z",
+            "description": "",
+            "id": "ecsTaskExecutionRoleeee",
+            "max_session_duration": 3600,
+            "name": "ecsTaskExecutionRoleeee",
+            "path": "/",
+            "permissions_boundary": "",
+            "role_last_used": [
+              {
+                "last_used_date": "2024-10-13T06:16:30Z",
+                "region": "ap-northeast-1"
+              }
+            ],
+            "tags": {},
+            "unique_id": "AROATQUHIFFSI4ITDSS2N"
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.ecs.module.ecs.module.network",
+      "mode": "data",
+      "type": "aws_route_tables",
+      "name": "private_rt",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-private-route-table"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "rtb-053a44f6e2db23cd6"
+            ],
+            "tags": null,
+            "timeouts": null,
+            "vpc_id": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.ecs.module.ecs.module.network",
+      "mode": "data",
+      "type": "aws_subnets",
+      "name": "private",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-private-an1a-subnet"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "subnet-05d9353306ecc99ea"
+            ],
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.ecs.module.ecs.module.network",
+      "mode": "data",
+      "type": "aws_subnets",
+      "name": "private2",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-private-an1c-subnet"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "subnet-0a8036313434a8cbd"
+            ],
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.ecs.module.ecs.module.network",
+      "mode": "data",
+      "type": "aws_subnets",
+      "name": "public",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-public-an1a-subnet"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "subnet-0e43118a913be8aaf"
+            ],
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.ecs.module.ecs.module.network",
+      "mode": "data",
+      "type": "aws_subnets",
+      "name": "public2",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-public-an1c-subnet"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "subnet-0fa1f19acc1c55a9a"
+            ],
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.ecs.module.ecs.module.network",
+      "mode": "data",
+      "type": "aws_vpcs",
+      "name": "main",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-vpc"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "vpc-0b24c0cf9ca3538f1"
+            ],
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.ecs.module.global_network",
+      "mode": "data",
+      "type": "aws_route_tables",
+      "name": "private_rt",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-private-route-table"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "rtb-053a44f6e2db23cd6"
+            ],
+            "tags": null,
+            "timeouts": null,
+            "vpc_id": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.ecs.module.global_network",
+      "mode": "data",
+      "type": "aws_subnets",
+      "name": "private",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-private-an1a-subnet"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "subnet-05d9353306ecc99ea"
+            ],
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.ecs.module.global_network",
+      "mode": "data",
+      "type": "aws_subnets",
+      "name": "private2",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-private-an1c-subnet"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "subnet-0a8036313434a8cbd"
+            ],
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.ecs.module.global_network",
+      "mode": "data",
+      "type": "aws_subnets",
+      "name": "public",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-public-an1a-subnet"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "subnet-0e43118a913be8aaf"
+            ],
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.ecs.module.global_network",
+      "mode": "data",
+      "type": "aws_subnets",
+      "name": "public2",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-public-an1c-subnet"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "subnet-0fa1f19acc1c55a9a"
+            ],
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.dev.module.ecs.module.global_network",
+      "mode": "data",
+      "type": "aws_vpcs",
+      "name": "main",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-vpc"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "vpc-0b24c0cf9ca3538f1"
+            ],
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.ecs",
+      "mode": "managed",
+      "type": "aws_cloudwatch_log_group",
+      "name": "vpc_endpoint_logs",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:logs:ap-northeast-1:241875560804:log-group:vpc-endpoint-logs",
+            "id": "vpc-endpoint-logs",
+            "kms_key_id": "",
+            "log_group_class": "STANDARD",
+            "name": "vpc-endpoint-logs",
+            "name_prefix": "",
+            "retention_in_days": 7,
+            "skip_destroy": false,
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_1",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_2",
+            "module.global_bootstrap.module.network.aws_route_table_association.public",
+            "module.global_bootstrap.module.network.aws_route_table_association.public2",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.ecs",
+      "mode": "managed",
+      "type": "aws_ecs_cluster",
+      "name": "new_cluster",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ecs:ap-northeast-1:241875560804:cluster/todolist_cluster",
+            "configuration": [],
+            "id": "arn:aws:ecs:ap-northeast-1:241875560804:cluster/todolist_cluster",
+            "name": "todolist_cluster",
+            "service_connect_defaults": [],
+            "setting": [
+              {
+                "name": "containerInsights",
+                "value": "disabled"
+              }
+            ],
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_1",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_2",
+            "module.global_bootstrap.module.network.aws_route_table_association.public",
+            "module.global_bootstrap.module.network.aws_route_table_association.public2",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.ecs",
+      "mode": "managed",
+      "type": "aws_flow_log",
+      "name": "vpc_endpoint_flow_log",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-1:241875560804:vpc-flow-log/fl-006467f6db87c2ad4",
+            "deliver_cross_account_role": "",
+            "destination_options": [],
+            "eni_id": null,
+            "iam_role_arn": "arn:aws:iam::241875560804:role/vpc-endpoint-logs-role",
+            "id": "fl-006467f6db87c2ad4",
+            "log_destination": "arn:aws:logs:ap-northeast-1:241875560804:log-group:vpc-endpoint-logs",
+            "log_destination_type": "cloud-watch-logs",
+            "log_format": "${version} ${account-id} ${interface-id} ${srcaddr} ${dstaddr} ${srcport} ${dstport} ${protocol} ${packets} ${bytes} ${start} ${end} ${action} ${log-status}",
+            "log_group_name": "vpc-endpoint-logs",
+            "max_aggregation_interval": 600,
+            "subnet_id": null,
+            "tags": {},
+            "tags_all": {},
+            "traffic_type": "ALL",
+            "transit_gateway_attachment_id": null,
+            "transit_gateway_id": null,
+            "vpc_id": "vpc-0b24c0cf9ca3538f1"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.global_bootstrap.module.ecs.aws_cloudwatch_log_group.vpc_endpoint_logs",
+            "module.global_bootstrap.module.ecs.aws_iam_role.vpc_endpoint_logs_role",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_vpcs.main",
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_1",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_2",
+            "module.global_bootstrap.module.network.aws_route_table_association.public",
+            "module.global_bootstrap.module.network.aws_route_table_association.public2",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.ecs",
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "ecs_task_execution_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::241875560804:policy/ecsTaskExecutionPolicy",
+            "attachment_count": 1,
+            "description": "Policy for ECS task to access ECR and S3",
+            "id": "arn:aws:iam::241875560804:policy/ecsTaskExecutionPolicy",
+            "name": "ecsTaskExecutionPolicy",
+            "name_prefix": "",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":[\"ecr:GetDownloadUrlForLayer\",\"ecr:BatchGetImage\",\"ecr:BatchCheckLayerAvailability\",\"ecr:GetAuthorizationToken\"],\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":[\"s3:GetObject\",\"s3:ListBucket\"],\"Effect\":\"Allow\",\"Resource\":\"*\"},{\"Action\":[\"logs:CreateLogStream\",\"logs:PutLogEvents\"],\"Effect\":\"Allow\",\"Resource\":\"arn:aws:logs:*:*:*\"}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPATQUHIFFSCBBK5SLRE",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_1",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_2",
+            "module.global_bootstrap.module.network.aws_route_table_association.public",
+            "module.global_bootstrap.module.network.aws_route_table_association.public2",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.ecs",
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "vpc_endpoint_logs_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::241875560804:policy/vpc-endpoint-logs-policy",
+            "attachment_count": 1,
+            "description": "",
+            "id": "arn:aws:iam::241875560804:policy/vpc-endpoint-logs-policy",
+            "name": "vpc-endpoint-logs-policy",
+            "name_prefix": "",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":\"logs:CreateLogStream\",\"Effect\":\"Allow\",\"Resource\":\"arn:aws:logs:ap-northeast-1:241875560804:log-group:vpc-endpoint-logs:*\"},{\"Action\":\"logs:PutLogEvents\",\"Effect\":\"Allow\",\"Resource\":\"arn:aws:logs:ap-northeast-1:241875560804:log-group:vpc-endpoint-logs:*\"}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPATQUHIFFSJX2ROYDTK",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.global_bootstrap.module.ecs.aws_cloudwatch_log_group.vpc_endpoint_logs",
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_1",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_2",
+            "module.global_bootstrap.module.network.aws_route_table_association.public",
+            "module.global_bootstrap.module.network.aws_route_table_association.public2",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.ecs",
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "ecs_task_execution",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::241875560804:role/ecsTaskExecutionRoleeee",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ecs-tasks.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2024-10-13T06:09:43Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "ecsTaskExecutionRoleeee",
+            "inline_policy": [],
+            "managed_policy_arns": [
+              "arn:aws:iam::241875560804:policy/ecsTaskExecutionPolicy",
+              "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess",
+              "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+            ],
+            "max_session_duration": 3600,
+            "name": "ecsTaskExecutionRoleeee",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {},
+            "tags_all": {},
+            "unique_id": "AROATQUHIFFSI4ITDSS2N"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_1",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_2",
+            "module.global_bootstrap.module.network.aws_route_table_association.public",
+            "module.global_bootstrap.module.network.aws_route_table_association.public2",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.ecs",
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "vpc_endpoint_logs_role",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::241875560804:role/vpc-endpoint-logs-role",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"vpc-flow-logs.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2024-10-13T06:09:43Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "vpc-endpoint-logs-role",
+            "inline_policy": [],
+            "managed_policy_arns": [
+              "arn:aws:iam::241875560804:policy/vpc-endpoint-logs-policy"
+            ],
+            "max_session_duration": 3600,
+            "name": "vpc-endpoint-logs-role",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {},
+            "tags_all": {},
+            "unique_id": "AROATQUHIFFSFZUH4IV7T"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_1",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_2",
+            "module.global_bootstrap.module.network.aws_route_table_association.public",
+            "module.global_bootstrap.module.network.aws_route_table_association.public2",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.ecs",
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "ecs_task_cloudwatch_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "ecsTaskExecutionRoleeee-20241013060944408400000009",
+            "policy_arn": "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess",
+            "role": "ecsTaskExecutionRoleeee"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.global_bootstrap.module.ecs.aws_iam_role.ecs_task_execution",
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_1",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_2",
+            "module.global_bootstrap.module.network.aws_route_table_association.public",
+            "module.global_bootstrap.module.network.aws_route_table_association.public2",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.ecs",
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "ecs_task_execution_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "ecsTaskExecutionRoleeee-20241013060944406400000008",
+            "policy_arn": "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy",
+            "role": "ecsTaskExecutionRoleeee"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.global_bootstrap.module.ecs.aws_iam_role.ecs_task_execution",
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_1",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_2",
+            "module.global_bootstrap.module.network.aws_route_table_association.public",
+            "module.global_bootstrap.module.network.aws_route_table_association.public2",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.ecs",
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "ecs_task_execution_role_policy_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "ecsTaskExecutionRoleeee-20241013060944401500000007",
+            "policy_arn": "arn:aws:iam::241875560804:policy/ecsTaskExecutionPolicy",
+            "role": "ecsTaskExecutionRoleeee"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.global_bootstrap.module.ecs.aws_iam_policy.ecs_task_execution_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_role.ecs_task_execution",
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_1",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_2",
+            "module.global_bootstrap.module.network.aws_route_table_association.public",
+            "module.global_bootstrap.module.network.aws_route_table_association.public2",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.ecs",
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "vpc_endpoint_logs_role_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "vpc-endpoint-logs-role-20241013060944380300000006",
+            "policy_arn": "arn:aws:iam::241875560804:policy/vpc-endpoint-logs-policy",
+            "role": "vpc-endpoint-logs-role"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.global_bootstrap.module.ecs.aws_cloudwatch_log_group.vpc_endpoint_logs",
+            "module.global_bootstrap.module.ecs.aws_iam_policy.vpc_endpoint_logs_policy",
+            "module.global_bootstrap.module.ecs.aws_iam_role.vpc_endpoint_logs_role",
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_1",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_2",
+            "module.global_bootstrap.module.network.aws_route_table_association.public",
+            "module.global_bootstrap.module.network.aws_route_table_association.public2",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.ecs",
+      "mode": "managed",
+      "type": "aws_security_group",
+      "name": "ecr_endpoint_sg",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-1:241875560804:security-group/sg-0f513ed54a61e9a33",
+            "description": "Managed by Terraform",
+            "egress": [
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "",
+                "from_port": 0,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "-1",
+                "security_groups": [],
+                "self": false,
+                "to_port": 0
+              }
+            ],
+            "id": "sg-0f513ed54a61e9a33",
+            "ingress": [
+              {
+                "cidr_blocks": [
+                  "10.0.0.0/16"
+                ],
+                "description": "",
+                "from_port": 443,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [],
+                "self": false,
+                "to_port": 443
+              }
+            ],
+            "name": "terraform-20241013060942549700000004",
+            "name_prefix": "terraform-",
+            "owner_id": "241875560804",
+            "revoke_rules_on_delete": false,
+            "tags": {
+              "Name": "todolist-vpc_endpoint-sg"
+            },
+            "tags_all": {
+              "Name": "todolist-vpc_endpoint-sg"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-0b24c0cf9ca3538f1"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6OTAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0=",
+          "dependencies": [
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_vpcs.main",
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_1",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_2",
+            "module.global_bootstrap.module.network.aws_route_table_association.public",
+            "module.global_bootstrap.module.network.aws_route_table_association.public2",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.ecs",
+      "mode": "managed",
+      "type": "aws_vpc_endpoint",
+      "name": "cloudwatch_logs",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-1:241875560804:vpc-endpoint/vpce-0edd779f7506571fa",
+            "auto_accept": null,
+            "cidr_blocks": [],
+            "dns_entry": [
+              {
+                "dns_name": "vpce-0edd779f7506571fa-f99slhos.logs.ap-northeast-1.vpce.amazonaws.com",
+                "hosted_zone_id": "Z2E726K9Y6RL4W"
+              },
+              {
+                "dns_name": "vpce-0edd779f7506571fa-f99slhos-ap-northeast-1a.logs.ap-northeast-1.vpce.amazonaws.com",
+                "hosted_zone_id": "Z2E726K9Y6RL4W"
+              },
+              {
+                "dns_name": "vpce-0edd779f7506571fa-f99slhos-ap-northeast-1c.logs.ap-northeast-1.vpce.amazonaws.com",
+                "hosted_zone_id": "Z2E726K9Y6RL4W"
+              },
+              {
+                "dns_name": "logs.ap-northeast-1.amazonaws.com",
+                "hosted_zone_id": "Z09230093RLE0FXCMHOIR"
+              },
+              {
+                "dns_name": "logs.ap-northeast-1.api.aws",
+                "hosted_zone_id": "Z09943211R84X3QG06LGL"
+              }
+            ],
+            "dns_options": [
+              {
+                "dns_record_ip_type": "ipv4",
+                "private_dns_only_for_inbound_resolver_endpoint": false
+              }
+            ],
+            "id": "vpce-0edd779f7506571fa",
+            "ip_address_type": "ipv4",
+            "network_interface_ids": [
+              "eni-03a4f980a8cf0adeb",
+              "eni-0598ae609bb9ae21e"
+            ],
+            "owner_id": "241875560804",
+            "policy": "{\"Statement\":[{\"Action\":\"*\",\"Effect\":\"Allow\",\"Principal\":\"*\",\"Resource\":\"*\"}]}",
+            "prefix_list_id": null,
+            "private_dns_enabled": true,
+            "requester_managed": false,
+            "route_table_ids": [],
+            "security_group_ids": [
+              "sg-0f513ed54a61e9a33"
+            ],
+            "service_name": "com.amazonaws.ap-northeast-1.logs",
+            "state": "available",
+            "subnet_configuration": [
+              {
+                "ipv4": "10.0.11.122",
+                "ipv6": "",
+                "subnet_id": "subnet-05d9353306ecc99ea"
+              },
+              {
+                "ipv4": "10.0.12.208",
+                "ipv6": "",
+                "subnet_id": "subnet-0a8036313434a8cbd"
+              }
+            ],
+            "subnet_ids": [
+              "subnet-05d9353306ecc99ea",
+              "subnet-0a8036313434a8cbd"
+            ],
+            "tags": {},
+            "tags_all": {},
+            "timeouts": null,
+            "vpc_endpoint_type": "Interface",
+            "vpc_id": "vpc-0b24c0cf9ca3538f1"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6NjAwMDAwMDAwMDAwLCJ1cGRhdGUiOjYwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.global_bootstrap.module.ecs.aws_security_group.ecr_endpoint_sg",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.private",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.private2",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_vpcs.main",
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_1",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_2",
+            "module.global_bootstrap.module.network.aws_route_table_association.public",
+            "module.global_bootstrap.module.network.aws_route_table_association.public2",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.ecs",
+      "mode": "managed",
+      "type": "aws_vpc_endpoint",
+      "name": "ecr_api",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-1:241875560804:vpc-endpoint/vpce-0cac192762d80fc4f",
+            "auto_accept": null,
+            "cidr_blocks": [],
+            "dns_entry": [
+              {
+                "dns_name": "vpce-0cac192762d80fc4f-iq78iz7a.api.ecr.ap-northeast-1.vpce.amazonaws.com",
+                "hosted_zone_id": "Z2E726K9Y6RL4W"
+              },
+              {
+                "dns_name": "vpce-0cac192762d80fc4f-iq78iz7a-ap-northeast-1c.api.ecr.ap-northeast-1.vpce.amazonaws.com",
+                "hosted_zone_id": "Z2E726K9Y6RL4W"
+              },
+              {
+                "dns_name": "vpce-0cac192762d80fc4f-iq78iz7a-ap-northeast-1a.api.ecr.ap-northeast-1.vpce.amazonaws.com",
+                "hosted_zone_id": "Z2E726K9Y6RL4W"
+              },
+              {
+                "dns_name": "api.ecr.ap-northeast-1.amazonaws.com",
+                "hosted_zone_id": "Z04577182HE3LECQWSKG0"
+              }
+            ],
+            "dns_options": [
+              {
+                "dns_record_ip_type": "ipv4",
+                "private_dns_only_for_inbound_resolver_endpoint": false
+              }
+            ],
+            "id": "vpce-0cac192762d80fc4f",
+            "ip_address_type": "ipv4",
+            "network_interface_ids": [
+              "eni-0133ee81ae11f601e",
+              "eni-0c8863d4fb8a666b9"
+            ],
+            "owner_id": "241875560804",
+            "policy": "{\"Statement\":[{\"Action\":\"*\",\"Effect\":\"Allow\",\"Principal\":\"*\",\"Resource\":\"*\"}]}",
+            "prefix_list_id": null,
+            "private_dns_enabled": true,
+            "requester_managed": false,
+            "route_table_ids": [],
+            "security_group_ids": [
+              "sg-0f513ed54a61e9a33"
+            ],
+            "service_name": "com.amazonaws.ap-northeast-1.ecr.api",
+            "state": "available",
+            "subnet_configuration": [
+              {
+                "ipv4": "10.0.11.240",
+                "ipv6": "",
+                "subnet_id": "subnet-05d9353306ecc99ea"
+              },
+              {
+                "ipv4": "10.0.12.175",
+                "ipv6": "",
+                "subnet_id": "subnet-0a8036313434a8cbd"
+              }
+            ],
+            "subnet_ids": [
+              "subnet-05d9353306ecc99ea",
+              "subnet-0a8036313434a8cbd"
+            ],
+            "tags": {},
+            "tags_all": {},
+            "timeouts": null,
+            "vpc_endpoint_type": "Interface",
+            "vpc_id": "vpc-0b24c0cf9ca3538f1"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6NjAwMDAwMDAwMDAwLCJ1cGRhdGUiOjYwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.global_bootstrap.module.ecs.aws_security_group.ecr_endpoint_sg",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.private",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.private2",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_vpcs.main",
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_1",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_2",
+            "module.global_bootstrap.module.network.aws_route_table_association.public",
+            "module.global_bootstrap.module.network.aws_route_table_association.public2",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.ecs",
+      "mode": "managed",
+      "type": "aws_vpc_endpoint",
+      "name": "ecr_dkr",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-1:241875560804:vpc-endpoint/vpce-0399479c3b235ec9b",
+            "auto_accept": null,
+            "cidr_blocks": [],
+            "dns_entry": [
+              {
+                "dns_name": "vpce-0399479c3b235ec9b-6p00m6lq.dkr.ecr.ap-northeast-1.vpce.amazonaws.com",
+                "hosted_zone_id": "Z2E726K9Y6RL4W"
+              },
+              {
+                "dns_name": "vpce-0399479c3b235ec9b-6p00m6lq-ap-northeast-1a.dkr.ecr.ap-northeast-1.vpce.amazonaws.com",
+                "hosted_zone_id": "Z2E726K9Y6RL4W"
+              },
+              {
+                "dns_name": "vpce-0399479c3b235ec9b-6p00m6lq-ap-northeast-1c.dkr.ecr.ap-northeast-1.vpce.amazonaws.com",
+                "hosted_zone_id": "Z2E726K9Y6RL4W"
+              },
+              {
+                "dns_name": "dkr.ecr.ap-northeast-1.amazonaws.com",
+                "hosted_zone_id": "Z0859919E4B7VDMOTNCD"
+              },
+              {
+                "dns_name": "*.dkr.ecr.ap-northeast-1.amazonaws.com",
+                "hosted_zone_id": "Z0859919E4B7VDMOTNCD"
+              }
+            ],
+            "dns_options": [
+              {
+                "dns_record_ip_type": "ipv4",
+                "private_dns_only_for_inbound_resolver_endpoint": false
+              }
+            ],
+            "id": "vpce-0399479c3b235ec9b",
+            "ip_address_type": "ipv4",
+            "network_interface_ids": [
+              "eni-08ce9e8db98c66621",
+              "eni-0d0c6696d47dcab7e"
+            ],
+            "owner_id": "241875560804",
+            "policy": "{\"Statement\":[{\"Action\":\"*\",\"Effect\":\"Allow\",\"Principal\":\"*\",\"Resource\":\"*\"}]}",
+            "prefix_list_id": null,
+            "private_dns_enabled": true,
+            "requester_managed": false,
+            "route_table_ids": [],
+            "security_group_ids": [
+              "sg-0f513ed54a61e9a33"
+            ],
+            "service_name": "com.amazonaws.ap-northeast-1.ecr.dkr",
+            "state": "available",
+            "subnet_configuration": [
+              {
+                "ipv4": "10.0.11.217",
+                "ipv6": "",
+                "subnet_id": "subnet-05d9353306ecc99ea"
+              },
+              {
+                "ipv4": "10.0.12.245",
+                "ipv6": "",
+                "subnet_id": "subnet-0a8036313434a8cbd"
+              }
+            ],
+            "subnet_ids": [
+              "subnet-05d9353306ecc99ea",
+              "subnet-0a8036313434a8cbd"
+            ],
+            "tags": {},
+            "tags_all": {},
+            "timeouts": null,
+            "vpc_endpoint_type": "Interface",
+            "vpc_id": "vpc-0b24c0cf9ca3538f1"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6NjAwMDAwMDAwMDAwLCJ1cGRhdGUiOjYwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.global_bootstrap.module.ecs.aws_security_group.ecr_endpoint_sg",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.private",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_subnets.private2",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_vpcs.main",
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_1",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_2",
+            "module.global_bootstrap.module.network.aws_route_table_association.public",
+            "module.global_bootstrap.module.network.aws_route_table_association.public2",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.ecs",
+      "mode": "managed",
+      "type": "aws_vpc_endpoint",
+      "name": "s3",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-1:241875560804:vpc-endpoint/vpce-0e25ea150c33a4184",
+            "auto_accept": null,
+            "cidr_blocks": [
+              "3.5.152.0/21",
+              "52.219.162.0/23",
+              "52.219.0.0/20",
+              "52.219.16.0/22",
+              "52.219.196.0/22",
+              "52.219.172.0/22",
+              "52.219.195.0/24",
+              "52.219.200.0/23",
+              "52.219.150.0/23",
+              "52.219.20.0/24",
+              "52.219.152.0/22",
+              "52.219.136.0/22",
+              "52.219.68.0/22"
+            ],
+            "dns_entry": [],
+            "dns_options": [],
+            "id": "vpce-0e25ea150c33a4184",
+            "ip_address_type": "",
+            "network_interface_ids": [],
+            "owner_id": "241875560804",
+            "policy": "{\"Statement\":[{\"Action\":\"*\",\"Effect\":\"Allow\",\"Principal\":\"*\",\"Resource\":\"*\"}],\"Version\":\"2008-10-17\"}",
+            "prefix_list_id": "pl-61a54008",
+            "private_dns_enabled": false,
+            "requester_managed": false,
+            "route_table_ids": [
+              "rtb-053a44f6e2db23cd6"
+            ],
+            "security_group_ids": [],
+            "service_name": "com.amazonaws.ap-northeast-1.s3",
+            "state": "available",
+            "subnet_configuration": [],
+            "subnet_ids": [],
+            "tags": {},
+            "tags_all": {},
+            "timeouts": null,
+            "vpc_endpoint_type": "Gateway",
+            "vpc_id": "vpc-0b24c0cf9ca3538f1"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6NjAwMDAwMDAwMDAwLCJ1cGRhdGUiOjYwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_route_tables.private_rt",
+            "module.global_bootstrap.module.ecs.module.global_network.data.aws_vpcs.main",
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_1",
+            "module.global_bootstrap.module.network.aws_route_table_association.private_rt_assoc_2",
+            "module.global_bootstrap.module.network.aws_route_table_association.public",
+            "module.global_bootstrap.module.network.aws_route_table_association.public2",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.ecs.module.global_network",
+      "mode": "data",
+      "type": "aws_route_tables",
+      "name": "private_rt",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-private-route-table"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "rtb-053a44f6e2db23cd6"
+            ],
+            "tags": null,
+            "timeouts": null,
+            "vpc_id": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.ecs.module.global_network",
+      "mode": "data",
+      "type": "aws_subnets",
+      "name": "private",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-private-an1a-subnet"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "subnet-05d9353306ecc99ea"
+            ],
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.ecs.module.global_network",
+      "mode": "data",
+      "type": "aws_subnets",
+      "name": "private2",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-private-an1c-subnet"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "subnet-0a8036313434a8cbd"
+            ],
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.ecs.module.global_network",
+      "mode": "data",
+      "type": "aws_subnets",
+      "name": "public",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-public-an1a-subnet"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "subnet-0e43118a913be8aaf"
+            ],
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.ecs.module.global_network",
+      "mode": "data",
+      "type": "aws_subnets",
+      "name": "public2",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-public-an1c-subnet"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "subnet-0fa1f19acc1c55a9a"
+            ],
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.ecs.module.global_network",
+      "mode": "data",
+      "type": "aws_vpcs",
+      "name": "main",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "filter": [
+              {
+                "name": "tag:Name",
+                "values": [
+                  "todolist-vpc"
+                ]
+              }
+            ],
+            "id": "ap-northeast-1",
+            "ids": [
+              "vpc-0b24c0cf9ca3538f1"
+            ],
+            "tags": null,
+            "timeouts": null
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.network",
+      "mode": "managed",
+      "type": "aws_internet_gateway",
+      "name": "main",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-1:241875560804:internet-gateway/igw-0e5fc483ea13b696e",
+            "id": "igw-0e5fc483ea13b696e",
+            "owner_id": "241875560804",
+            "tags": {
+              "Name": "todolist-igw"
+            },
+            "tags_all": {
+              "Name": "todolist-igw"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-0b24c0cf9ca3538f1"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.network",
+      "mode": "managed",
+      "type": "aws_route_table",
+      "name": "private_rt",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-1:241875560804:route-table/rtb-053a44f6e2db23cd6",
+            "id": "rtb-053a44f6e2db23cd6",
+            "owner_id": "241875560804",
+            "propagating_vgws": [],
+            "route": [],
+            "tags": {
+              "Name": "todolist-private-route-table"
+            },
+            "tags_all": {
+              "Name": "todolist-private-route-table"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-0b24c0cf9ca3538f1"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.network",
+      "mode": "managed",
+      "type": "aws_route_table",
+      "name": "public_rt",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-1:241875560804:route-table/rtb-040c59686709b512a",
+            "id": "rtb-040c59686709b512a",
+            "owner_id": "241875560804",
+            "propagating_vgws": [],
+            "route": [
+              {
+                "carrier_gateway_id": "",
+                "cidr_block": "0.0.0.0/0",
+                "core_network_arn": "",
+                "destination_prefix_list_id": "",
+                "egress_only_gateway_id": "",
+                "gateway_id": "igw-0e5fc483ea13b696e",
+                "ipv6_cidr_block": "",
+                "local_gateway_id": "",
+                "nat_gateway_id": "",
+                "network_interface_id": "",
+                "transit_gateway_id": "",
+                "vpc_endpoint_id": "",
+                "vpc_peering_connection_id": ""
+              }
+            ],
+            "tags": {
+              "Name": "todolist-public-route-table"
+            },
+            "tags_all": {
+              "Name": "todolist-public-route-table"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-0b24c0cf9ca3538f1"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.network",
+      "mode": "managed",
+      "type": "aws_route_table_association",
+      "name": "private_rt_assoc_1",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "gateway_id": "",
+            "id": "rtbassoc-073a7759819b0e983",
+            "route_table_id": "rtb-053a44f6e2db23cd6",
+            "subnet_id": "subnet-05d9353306ecc99ea",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_subnet.private",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.network",
+      "mode": "managed",
+      "type": "aws_route_table_association",
+      "name": "private_rt_assoc_2",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "gateway_id": "",
+            "id": "rtbassoc-0c28e7aeb5a9acc94",
+            "route_table_id": "rtb-053a44f6e2db23cd6",
+            "subnet_id": "subnet-0a8036313434a8cbd",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.global_bootstrap.module.network.aws_route_table.private_rt",
+            "module.global_bootstrap.module.network.aws_subnet.private2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.network",
+      "mode": "managed",
+      "type": "aws_route_table_association",
+      "name": "public",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "gateway_id": "",
+            "id": "rtbassoc-0db71bf540c4b89ce",
+            "route_table_id": "rtb-040c59686709b512a",
+            "subnet_id": "subnet-0e43118a913be8aaf",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_subnet.public",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.network",
+      "mode": "managed",
+      "type": "aws_route_table_association",
+      "name": "public2",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "gateway_id": "",
+            "id": "rtbassoc-04f4be6911eb12cf1",
+            "route_table_id": "rtb-040c59686709b512a",
+            "subnet_id": "subnet-0fa1f19acc1c55a9a",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.global_bootstrap.module.network.aws_internet_gateway.main",
+            "module.global_bootstrap.module.network.aws_route_table.public_rt",
+            "module.global_bootstrap.module.network.aws_subnet.public2",
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.network",
+      "mode": "managed",
+      "type": "aws_subnet",
+      "name": "private",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-1:241875560804:subnet/subnet-05d9353306ecc99ea",
+            "assign_ipv6_address_on_creation": false,
+            "availability_zone": "ap-northeast-1a",
+            "availability_zone_id": "apne1-az4",
+            "cidr_block": "10.0.11.0/24",
+            "customer_owned_ipv4_pool": "",
+            "enable_dns64": false,
+            "enable_lni_at_device_index": 0,
+            "enable_resource_name_dns_a_record_on_launch": false,
+            "enable_resource_name_dns_aaaa_record_on_launch": false,
+            "id": "subnet-05d9353306ecc99ea",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_association_id": "",
+            "ipv6_native": false,
+            "map_customer_owned_ip_on_launch": false,
+            "map_public_ip_on_launch": false,
+            "outpost_arn": "",
+            "owner_id": "241875560804",
+            "private_dns_hostname_type_on_launch": "ip-name",
+            "tags": {
+              "Name": "todolist-private-an1a-subnet"
+            },
+            "tags_all": {
+              "Name": "todolist-private-an1a-subnet"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-0b24c0cf9ca3538f1"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.network",
+      "mode": "managed",
+      "type": "aws_subnet",
+      "name": "private2",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-1:241875560804:subnet/subnet-0a8036313434a8cbd",
+            "assign_ipv6_address_on_creation": false,
+            "availability_zone": "ap-northeast-1c",
+            "availability_zone_id": "apne1-az1",
+            "cidr_block": "10.0.12.0/24",
+            "customer_owned_ipv4_pool": "",
+            "enable_dns64": false,
+            "enable_lni_at_device_index": 0,
+            "enable_resource_name_dns_a_record_on_launch": false,
+            "enable_resource_name_dns_aaaa_record_on_launch": false,
+            "id": "subnet-0a8036313434a8cbd",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_association_id": "",
+            "ipv6_native": false,
+            "map_customer_owned_ip_on_launch": false,
+            "map_public_ip_on_launch": false,
+            "outpost_arn": "",
+            "owner_id": "241875560804",
+            "private_dns_hostname_type_on_launch": "ip-name",
+            "tags": {
+              "Name": "todolist-private-an1c-subnet"
+            },
+            "tags_all": {
+              "Name": "todolist-private-an1c-subnet"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-0b24c0cf9ca3538f1"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.network",
+      "mode": "managed",
+      "type": "aws_subnet",
+      "name": "public",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-1:241875560804:subnet/subnet-0e43118a913be8aaf",
+            "assign_ipv6_address_on_creation": false,
+            "availability_zone": "ap-northeast-1a",
+            "availability_zone_id": "apne1-az4",
+            "cidr_block": "10.0.1.0/24",
+            "customer_owned_ipv4_pool": "",
+            "enable_dns64": false,
+            "enable_lni_at_device_index": 0,
+            "enable_resource_name_dns_a_record_on_launch": false,
+            "enable_resource_name_dns_aaaa_record_on_launch": false,
+            "id": "subnet-0e43118a913be8aaf",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_association_id": "",
+            "ipv6_native": false,
+            "map_customer_owned_ip_on_launch": false,
+            "map_public_ip_on_launch": false,
+            "outpost_arn": "",
+            "owner_id": "241875560804",
+            "private_dns_hostname_type_on_launch": "ip-name",
+            "tags": {
+              "Name": "todolist-public-an1a-subnet"
+            },
+            "tags_all": {
+              "Name": "todolist-public-an1a-subnet"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-0b24c0cf9ca3538f1"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.network",
+      "mode": "managed",
+      "type": "aws_subnet",
+      "name": "public2",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-1:241875560804:subnet/subnet-0fa1f19acc1c55a9a",
+            "assign_ipv6_address_on_creation": false,
+            "availability_zone": "ap-northeast-1c",
+            "availability_zone_id": "apne1-az1",
+            "cidr_block": "10.0.2.0/24",
+            "customer_owned_ipv4_pool": "",
+            "enable_dns64": false,
+            "enable_lni_at_device_index": 0,
+            "enable_resource_name_dns_a_record_on_launch": false,
+            "enable_resource_name_dns_aaaa_record_on_launch": false,
+            "id": "subnet-0fa1f19acc1c55a9a",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_association_id": "",
+            "ipv6_native": false,
+            "map_customer_owned_ip_on_launch": false,
+            "map_public_ip_on_launch": false,
+            "outpost_arn": "",
+            "owner_id": "241875560804",
+            "private_dns_hostname_type_on_launch": "ip-name",
+            "tags": {
+              "Name": "todolist-public-an1c-subnet"
+            },
+            "tags_all": {
+              "Name": "todolist-public-an1c-subnet"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-0b24c0cf9ca3538f1"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "module.global_bootstrap.module.network.aws_vpc.main"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.global_bootstrap.module.network",
+      "mode": "managed",
+      "type": "aws_vpc",
+      "name": "main",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:ap-northeast-1:241875560804:vpc/vpc-0b24c0cf9ca3538f1",
+            "assign_generated_ipv6_cidr_block": false,
+            "cidr_block": "10.0.0.0/16",
+            "default_network_acl_id": "acl-0a5e26ba323971366",
+            "default_route_table_id": "rtb-0e8c6ec5a9d92559f",
+            "default_security_group_id": "sg-05b05d613a7405cb4",
+            "dhcp_options_id": "dopt-4871452f",
+            "enable_dns_hostnames": true,
+            "enable_dns_support": true,
+            "enable_network_address_usage_metrics": false,
+            "id": "vpc-0b24c0cf9ca3538f1",
+            "instance_tenancy": "default",
+            "ipv4_ipam_pool_id": null,
+            "ipv4_netmask_length": null,
+            "ipv6_association_id": "",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_network_border_group": "",
+            "ipv6_ipam_pool_id": "",
+            "ipv6_netmask_length": 0,
+            "main_route_table_id": "rtb-0e8c6ec5a9d92559f",
+            "owner_id": "241875560804",
+            "tags": {
+              "Name": "todolist-vpc"
+            },
+            "tags_all": {
+              "Name": "todolist-vpc"
+            }
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ=="
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}

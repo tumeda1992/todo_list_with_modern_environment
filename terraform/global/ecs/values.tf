@@ -13,6 +13,10 @@ module "global_values" {
   source = "../values"
 }
 
+output "appname" {
+  value = module.global_values.appname
+}
+
 output "cluster_name" {
   value = "${module.global_values.appname}_cluster"
 }

@@ -80,18 +80,17 @@ resource "aws_ecs_service" "app" {
   network_configuration {
     subnets          = var.subnet_ids
     security_groups  = [aws_security_group.main.id]
-    assign_public_ip = true
+    assign_public_ip = var.need_displaying_ecs_task_public_ip
   }
 
-  #   load_balancer {
-  #     target_group_arn = aws_lb_target_group.main.arn
-  #     container_name   = "app"
-  #     container_port   = 80
-  #   }
-  #
-  #   depends_on = [
-  #     aws_lb_listener.main
-  #   ]
+  dynamic "load_balancer" {
+    for_each = var.alb_target_group_arn != "" ? [1] : []
+    content {
+      target_group_arn = var.alb_target_group_arn
+      container_name   = var.service_name
+      container_port   = local.application_port
+    }
+  }
 }
 
 resource "aws_security_group" "main" {
@@ -101,7 +100,8 @@ resource "aws_security_group" "main" {
     from_port   = local.application_port
     to_port     = local.application_port
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    security_groups = var.incoming_published_service_security_group_id != "" ? [var.incoming_published_service_security_group_id] : []
+    cidr_blocks = var.incoming_published_service_security_group_id != "" ? [] : ["0.0.0.0/0"]
   }
 
   egress {
@@ -112,12 +112,12 @@ resource "aws_security_group" "main" {
   }
 
   tags = {
-    Name = "main-sg"
+    Name = "${var.service_name}-ecs-service-sg"
   }
 }
 
 module "fetch_ip_address_of_task" {
-  count = var.skip_displaying_ip ? 0 : 1
+  count = var.need_displaying_ecs_task_public_ip ? 1 : 0
   source = "./fetch_ip_address_of_task"
 
   ecs_cluster_id = module.global_ecs.ecs_cluster_id
@@ -125,5 +125,5 @@ module "fetch_ip_address_of_task" {
 }
 
 output "ecs_task_public_ip" {
-  value = var.skip_displaying_ip ? "(skip)" : module.fetch_ip_address_of_task[0].ecs_task_public_ip
+  value = var.need_displaying_ecs_task_public_ip ? module.fetch_ip_address_of_task[0].ecs_task_public_ip : "(needless)"
 }

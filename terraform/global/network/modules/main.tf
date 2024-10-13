@@ -27,10 +27,31 @@ data "aws_subnets" "public" {
   }
 }
 
+data "aws_subnets" "public2" {
+  filter {
+    name   = "tag:Name"
+    values = [module.values.public_subnet_an1c_name]
+  }
+}
+
 data "aws_subnets" "private" {
   filter {
     name   = "tag:Name"
     values = [module.values.private_subnet_an1a_name]
+  }
+}
+
+data "aws_subnets" "private2" {
+  filter {
+    name   = "tag:Name"
+    values = [module.values.private_subnet_an1c_name]
+  }
+}
+
+data "aws_route_tables" "private_rt" {
+  filter {
+    name   = "tag:Name"
+    values = [module.values.private_route_table_name]
   }
 }
 
@@ -43,7 +64,18 @@ output "public_subnet_id" {
   value       = data.aws_subnets.public.ids[0]
 }
 
+output "public_subnet_id2" {
+  value       = data.aws_subnets.public2.ids[0]
+}
+
 output "private_subnet_id" {
   value       = data.aws_subnets.private.ids[0]
 }
 
+output "private_subnet_id2" {
+  value       = data.aws_subnets.private2.ids[0]
+}
+
+output "private_rt_id" {
+  value       = data.aws_route_tables.private_rt.ids[0]
+}

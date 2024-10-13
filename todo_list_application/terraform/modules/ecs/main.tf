@@ -32,7 +32,7 @@ module "ecs" {
   application_port = 30418
   healthcheck_url = "http://localhost:30418/healthcheck"
   subnet_ids = [module.global_network.public_subnet_id]
-  skip_displaying_ip = var.skip_displaying_ip
+  need_displaying_ecs_task_public_ip = !var.skip_displaying_ip
 }
 
 output "ecs_task_public_ip" {

@@ -1,10 +1,5 @@
 variable "ecr_registry_name" { type = string }
 
-variable "skip_displaying_ip" {
-  type = bool
-  default = false
-}
-
 provider "aws" {
   region = "ap-northeast-1"
 }
@@ -20,3 +15,6 @@ module "dev" {
   ecr_registry_name = var.ecr_registry_name
 }
 
+output "alb_dns_name" {
+  value = module.dev.alb_dns_name
+}

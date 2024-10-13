@@ -4,6 +4,16 @@ variable "application_port" { type = number }
 variable "healthcheck_url" { type = string }
 variable "subnet_ids" { type = list(string) }
 
+variable "incoming_published_service_security_group_id" {
+  type = string
+  default = ""
+}
+
+variable "alb_target_group_arn" {
+  type = string
+  default = ""
+}
+
 variable "cpu_architecture" {
   type = string
   default = "ARM64"
@@ -29,7 +39,7 @@ variable "memory_per_task" {
   default = 1024
 }
 
-variable "skip_displaying_ip" {
+variable "need_displaying_ecs_task_public_ip" {
   type    = bool
-  default = false
+  default = true
 }
