@@ -32,9 +32,10 @@ module TodoListApplication
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
+    config.hosts << /.*\.amazonaws\.com/
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins "http://localhost:30419"
+        origins '*'
 
         resource "*",
                  headers: :any,
