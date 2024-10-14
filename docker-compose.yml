@@ -33,7 +33,17 @@ services:
       - ./todo_list_next:/root/todo_list_next
     environment:
       - NEXT_PUBLIC_BACKEND_API_ORIGIN=http://todo_api:30418
-  
+
+  todo_app_next_lambda:
+    container_name: todo_next_lambda
+    build:
+      context: ./todo_list_next
+      dockerfile: ./lambda/Dockerfile
+    volumes:
+      - ./todo_list_next/lambda/handler.js:/var/task/handler.js
+    ports:
+      - "8080:8080"
+
 #  selenium-hub:
 #    image: selenium/hub:3.141.59-20200409
 #    container_name: selenium-hub
