@@ -9,6 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:  # 環境変数で一元管理
+      IMAGE_TAG: latest
+      REGISTRY: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
+      IMAGE_WITH_TAG: ${{ secrets.ECR_BACKEND_REPOSITORY }}:${{ env.IMAGE_TAG }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -25,19 +30,35 @@ jobs:
         with:
           registries: ${{ secrets.AWS_ACCOUNT_ID }}
 
+      - name: Restore Docker build cache
+        id: cache-restore
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache
+          key: buildx-${{ runner.os }}-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            buildx-${{ runner.os }}-
+
+      - name: Pull Previous Image for Cache (if cache missed)
+        if: steps.cache-restore.outputs.cache-hit != 'true'
+        run: |
+          docker pull $REGISTRY/$IMAGE_WITH_TAG || echo "No previous cache found"
+
+
+      - name: Create and Use Buildx Builder
+        run: docker buildx create --use
+
       - name: Build, tag, and push Docker image
         run: |
-          IMAGE_TAG=latest
-          REGISTRY=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
-          IMAGE_WITH_TAG=${{ secrets.ECR_BACKEND_REPOSITORY }}:$IMAGE_TAG
-          
-          docker pull $REGISTRY/$IMAGE_WITH_TAG-amd64 || echo "No cache found for amd64"
-          docker pull $REGISTRY/$IMAGE_WITH_TAG-arm64 || echo "No cache found for arm64"
-          
-          docker buildx create --use  # Docker Buildxを使用
           docker buildx build \
             --platform linux/amd64,linux/arm64 \
-            --cache-from=type=registry,ref=$REGISTRY/$IMAGE_WITH_TAG \
-            --cache-to=type=registry,mode=max,ref=$REGISTRY/$IMAGE_WITH_TAG \
+            --cache-from=type=local,src=/tmp/.buildx-cache \
+            --cache-to=type=local,dest=/tmp/.buildx-cache \
             -t $REGISTRY/$IMAGE_WITH_TAG ./todo_list_application \
             --push
+
+      - name: Save Docker build cache
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache
+          key: buildx-${{ runner.os }}-${{ hashFiles('**/Gemfile.lock') }}
