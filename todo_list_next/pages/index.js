@@ -13,8 +13,8 @@ const Home = ({ content }) => {
         {
           pids.map(pid => (
             <div key={pid}>
-              <Link 
-                href="/post/[pid]/[name]" // 見るjsファイル 
+              <Link
+                href="/post/[pid]/[name]" // 見るjsファイル
                 as={`/post/${pid}/hoge?param=k`} // パス
               >
                 Post {pid}
@@ -22,20 +22,12 @@ const Home = ({ content }) => {
             </div>
           ))
         }
-        apiコンテンツ: {content}
+        indexページだぜー
       </div>
     </React.Fragment>
   )
 }
 
-// contextはreqとか入ってる https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering
-// Home.getInitialProps = async ({ req }) =>  {
-// const getStaticProp = async ({ req }) =>  {
-const getServerSideProps = async ({ context }) =>  {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_ORIGIN}/hello`)
-  const json = await res.json()
-  return { props: { content: json.content } }
-}
-export { getServerSideProps }
+
 
 export default Home

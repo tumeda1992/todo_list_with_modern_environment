@@ -1,27 +1,43 @@
+// 公式でやるのうまくいかないから諦めた
 const next = require('next');
-const http = require('http');
 
-const app = next({ dev: false });
-const handle = app.getRequestHandler();
+const app = next({
+    dev: false,
+    conf: {},
+    dir: './'
+});
+const handler = app.getRequestHandler();
 
 exports.handler = async (event) => {
-    console.log('Received event:', JSON.stringify(event, null, 2)); // デバッグログ
+    await app.prepare();  // Next.jsの初期化
 
-    const { rawPath, httpMethod, headers, body } = event;
+    const { rawPath, httpMethod, headers, queryStringParameters, body } = event;
 
-    if (rawPath === '/api/hello' && httpMethod === 'GET') {
-        return {
+    const request = {
+        url: rawPath,
+        method: httpMethod,
+        headers,
+        body,
+        query: queryStringParameters,
+    };
+
+    return new Promise((resolve) => {
+        const response = {
             statusCode: 200,
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: 'John Doe' }),
+            headers: {},
+            body: '',
+            setHeader: (name, value) => (response.headers[name] = value),
+            write: (chunk) => (response.body += chunk),
+            end: () => resolve(response),
         };
-    } else {
-        return {
-            statusCode: 400,
-            body: 'Invalid request',
-        };
-    }
+
+        handler(request, response);
+    });
 };
+
+
+
+
 
 // デバッグ方法
 // curl -XPOST "http://localhost:8080/2015-03-31/functions/function/invocations" \
