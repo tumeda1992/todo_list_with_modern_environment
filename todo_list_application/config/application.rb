@@ -33,6 +33,7 @@ module TodoListApplication
     config.api_only = true
 
     config.hosts << /.*\.amazonaws\.com/
+    config.hosts << /.*\.todolist\.local/
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
