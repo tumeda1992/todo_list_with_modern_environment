@@ -30,5 +30,11 @@ jobs:
           IMAGE_TAG=latest
           REGISTRY=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
           IMAGE_WITH_TAG=${{ secrets.ECR_BACKEND_REPOSITORY }}:$IMAGE_TAG
+          docker pull $REGISTRY/$IMAGE_WITH_TAG || echo "No previous cache found"
           docker buildx create --use  # Docker Buildxを使用
-          docker buildx build --platform linux/amd64,linux/arm64 -t $REGISTRY/$IMAGE_WITH_TAG ./todo_list_application --push
+          docker buildx build \
+            --platform linux/amd64,linux/arm64 \
+            --cache-from=type=registry,ref=$REGISTRY/$IMAGE_WITH_TAG \
+            --cache-to=type=inline \
+            -t $REGISTRY/$IMAGE_WITH_TAG ./todo_list_application \
+            --push
