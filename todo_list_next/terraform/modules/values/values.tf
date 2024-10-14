@@ -13,8 +13,12 @@ module "values" {
   source = "../../../../terraform/global/values"
 }
 
+locals {
+  short_service_name = "frontend"
+}
+
 output "service_name" {
-  value = "${module.values.appname}-frontend"
+  value = "${module.values.appname}-${local.short_service_name}"
 }
 
 output "service_port" {
@@ -23,4 +27,8 @@ output "service_port" {
 
 output "healthcheck_path" {
   value = "/api/healthcheck"
+}
+
+output "short_service_name" {
+  value = local.short_service_name
 }

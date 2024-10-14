@@ -113,3 +113,7 @@ resource "aws_route_table_association" "private_rt_assoc_2" {
   route_table_id = aws_route_table.private_rt.id
 }
 
+resource "aws_service_discovery_private_dns_namespace" "main" {
+  name        = module.values.service_discovery_private_dns_namespace_name
+  vpc         = aws_vpc.main.id
+}

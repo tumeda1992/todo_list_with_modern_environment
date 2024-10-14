@@ -1,4 +1,5 @@
 variable "service_name" { type = string }
+variable "short_service_name" { type = string }
 variable "docker_image_name" { type = string }
 variable "application_port" { type = number }
 variable "healthcheck_url" { type = string }
@@ -12,6 +13,14 @@ variable "incoming_published_service_security_group_id" {
 variable "alb_target_group_arn" {
   type = string
   default = ""
+}
+
+variable "container_env_values" {
+  type = list(object({
+    name  = string
+    value = string
+  }))
+  default = []
 }
 
 variable "cpu_architecture" {

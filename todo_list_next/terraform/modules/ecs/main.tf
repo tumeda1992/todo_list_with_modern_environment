@@ -30,6 +30,10 @@ module "values" {
   source = "../values"
 }
 
+module "backend_values" {
+  source = "../../../../todo_list_application/terraform/modules/values"
+}
+
 module "global_network" {
   source = "../../../../terraform/global/network/modules"
 }
@@ -38,15 +42,21 @@ module "ecs" {
   source = "../../../../terraform/shared_abstract_modules/ecs"
 
   service_name = module.values.service_name
+  short_service_name = module.values.short_service_name
   docker_image_name = "${var.ecr_registry_name}/todo_app_front:latest"
   application_port = module.values.service_port
   healthcheck_url = "http://localhost:${module.values.service_port}${module.values.healthcheck_path}"
   subnet_ids = var.incoming_published_service_security_group_id == "" ? [module.global_network.public_subnet_id] : [module.global_network.private_subnet_id]
   incoming_published_service_security_group_id = var.incoming_published_service_security_group_id
   alb_target_group_arn = var.alb_target_group_arn
+  container_env_values = [{name = "NEXT_PUBLIC_BACKEND_API_ORIGIN", value = "http://${module.backend_values.backend_host}:${module.backend_values.service_port}"}]
   need_displaying_ecs_task_public_ip = !var.skip_displaying_ip
 }
 
 output "ecs_task_public_ip" {
   value = module.ecs.ecs_task_public_ip
+}
+
+output "ecs_security_group_id" {
+  value = module.ecs.ecs_security_group_id
 }

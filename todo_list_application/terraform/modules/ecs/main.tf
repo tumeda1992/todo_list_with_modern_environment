@@ -38,6 +38,7 @@ module "ecs" {
   source = "../../../../terraform/shared_abstract_modules/ecs"
 
   service_name = module.values.service_name
+  short_service_name = module.values.short_service_name
   docker_image_name = "${var.ecr_registry_name}/todo_app_back:latest"
   application_port = module.values.service_port
   healthcheck_url = "http://localhost:${module.values.service_port}${module.values.healthcheck_path}"
@@ -49,4 +50,8 @@ module "ecs" {
 
 output "ecs_task_public_ip" {
   value = module.ecs.ecs_task_public_ip
+}
+
+output "ecs_host" {
+  value = module.ecs.ecs_host
 }

@@ -17,6 +17,10 @@ module "global_ecs" {
   source = "../../global/ecs/modules"
 }
 
+module "global_values" {
+  source = "../../global/values"
+}
+
 locals {
   application_port = var.application_port
   cloudwatch_log_group = "/ecs/fargate-task/${var.service_name}"
@@ -43,6 +47,7 @@ resource "aws_ecs_task_definition" "app" {
       hostPort      = local.application_port
       protocol      = "tcp"
     }]
+    environment = var.container_env_values
     logConfiguration = {
       logDriver = "awslogs"
       options = {
@@ -97,6 +102,27 @@ resource "aws_ecs_service" "app" {
       container_port   = local.application_port
     }
   }
+
+  service_registries {
+    registry_arn = aws_service_discovery_service.main.arn
+  }
+}
+
+resource "aws_service_discovery_service" "main" {
+  name = var.short_service_name
+
+  dns_config {
+    namespace_id = module.network.service_discovery_private_dns_namespace_id
+
+    dns_records {
+      type = "A"
+      ttl  = 60
+    }
+  }
+
+  health_check_custom_config {
+    failure_threshold = 1
+  }
 }
 
 resource "aws_security_group" "main" {
@@ -132,4 +158,12 @@ module "fetch_ip_address_of_task" {
 
 output "ecs_task_public_ip" {
   value = var.need_displaying_ecs_task_public_ip ? module.fetch_ip_address_of_task[0].ecs_task_public_ip : "(needless)"
+}
+
+output "ecs_security_group_id" {
+  value = aws_security_group.main.id
+}
+
+output "ecs_host" {
+  value = var.short_service_name != "" ? "${var.short_service_name}.${module.global_values.internal_host_suffix}" : ""
 }

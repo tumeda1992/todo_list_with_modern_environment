@@ -33,3 +33,7 @@ module "ecs" {
   alb_target_group_arn = var.alb_target_group_arn
   skip_displaying_ip = true
 }
+
+output "ecs_dns" {
+  value = module.ecs.ecs_host
+}

@@ -44,3 +44,7 @@ output "public_route_table_name" {
 output "private_route_table_name" {
   value = "${module.global_values.appname}-private-route-table"
 }
+
+output "service_discovery_private_dns_namespace_name" {
+  value = module.global_values.internal_host_suffix
+}

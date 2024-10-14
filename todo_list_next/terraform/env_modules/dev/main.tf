@@ -27,3 +27,7 @@ module "ecs" {
 output "root_url" {
   value = "http://${module.alb.alb_dns_name}"
 }
+
+output "ecs_security_group_id" {
+  value = module.ecs.ecs_security_group_id
+}
