@@ -37,9 +37,7 @@ jobs:
           docker buildx create --use  # Docker Buildxを使用
           docker buildx build \
             --platform linux/amd64,linux/arm64 \
-            --cache-from=type=registry,ref=$REGISTRY/$IMAGE_WITH_TAG-amd64 \
-            --cache-from=type=registry,ref=$REGISTRY/$IMAGE_WITH_TAG-arm64 \
-            --cache-to=type=registry,mode=max,ref=$REGISTRY/$IMAGE_WITH_TAG-amd64 \
-            --cache-to=type=registry,mode=max,ref=$REGISTRY/$IMAGE_WITH_TAG-arm64 \
+            --cache-from=type=registry,ref=$REGISTRY/$IMAGE_WITH_TAG \
+            --cache-to=type=registry,mode=max,ref=$REGISTRY/$IMAGE_WITH_TAG \
             -t $REGISTRY/$IMAGE_WITH_TAG ./todo_list_application \
             --push
