@@ -9,10 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    env:  # 環境変数で一元管理
-      IMAGE_TAG: latest
+    env:
       REGISTRY: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
-      IMAGE_WITH_TAG: ${{ secrets.ECR_BACKEND_REPOSITORY }}:${{ env.IMAGE_TAG }}
+      IMAGE_WITH_TAG: ${{ secrets.ECR_BACKEND_REPOSITORY }}:latest
 
     steps:
       - name: Checkout code
