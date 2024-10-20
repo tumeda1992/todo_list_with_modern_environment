@@ -33,8 +33,6 @@ COPY --from=bundle-dependency-builder $apppath/vendor/bundle ./vendor/bundle
 # fargateのようにイメージ時点でソースコードを含めなければならないケースのため
 COPY ./ .
 
-RUN bundle install
-
 ENV PORT=30418
 EXPOSE $PORT
 COPY entrypoint.sh ./

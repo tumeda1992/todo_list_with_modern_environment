@@ -31,11 +31,16 @@ COPY . .
 COPY lambda/server.js ./server.js
 RUN npm install && npm run build
 
-CMD ["node", "server.js"]
+CMD ["yarn", "start:standalone"]
+
+
+#CMD ["node", "server.js"]
 #CMD ["server.handler"]
 
 # terraform化するときに必要なこと備忘録（terraform後に消していい）
-# - 関数URLはCORS設定をしないと生成されたホストからの通信を許可されない
+# - 関数URL
+#   - CORS設定をしないと生成されたホストからの通信を許可されない
+#   - 許可メソッドを*で指定
 # - タイムアウト30秒しておく（ssr用）
 
 # 20241011 関数URLでエラーは起きないけど、空の画面表示でパス通りのものを表示できているかも不明。
