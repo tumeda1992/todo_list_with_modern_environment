@@ -26,12 +26,13 @@ COPY --from=public.ecr.aws/awsguru/aws-lambda-adapter:0.8.4 /lambda-adapter /opt
 ENV PORT=8080
 WORKDIR /var/task
 
-# Next.jsアプリケーションを構築
 COPY . .
-COPY lambda/server.js ./server.js
-RUN npm install && npm run build
+RUN yarn install && yarn build
 
-CMD ["yarn", "start:standalone"]
+# next.config.jsで`output: 'standalone',`を指定してこのコマンドを打ったら
+# ローカルですらcssが404になってしまったので、一旦設定外した
+#CMD ["yarn", "start:standalone"]
+CMD ["yarn", "start"]
 
 
 #CMD ["node", "server.js"]
@@ -40,7 +41,7 @@ CMD ["yarn", "start:standalone"]
 # terraform化するときに必要なこと備忘録（terraform後に消していい）
 # - 関数URL
 #   - CORS設定をしないと生成されたホストからの通信を許可されない
-#   - 許可メソッドを*で指定
+#   - 呼び出しモードをRESPONSE_STREAMにしないと、結果が空のHTMLが返される
 # - タイムアウト30秒しておく（ssr用）
 
 # 20241011 関数URLでエラーは起きないけど、空の画面表示でパス通りのものを表示できているかも不明。

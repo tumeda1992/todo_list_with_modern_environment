@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "start:standalone": "node .next/standalone/server.js"
-
+    "start:standalone": "node .next/standalone/server.js",
+    "docker-compose-command": "next build && next start"
   },
   "dependencies": {
     "next": "14.2.12",

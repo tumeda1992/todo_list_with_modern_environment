@@ -36,11 +36,15 @@ services:
 
   todo_app_next_lambda:
     container_name: todo_next_lambda
+#    command: "yarn docker-compose-command"
     build:
       context: ./todo_list_next
       dockerfile: ./lambda/Dockerfile
     volumes:
       - ./todo_list_next/lambda/handler.js:/var/task/handler.js
+      - ./todo_list_next/.next:/var/task/.next
+      - ./todo_list_next/package.json:/var/task/package.json
+      - ./todo_list_next/next.config.js:/var/task/next.config.js
     ports:
       - "8080:8080"
 
