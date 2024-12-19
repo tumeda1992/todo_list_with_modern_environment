@@ -4,8 +4,6 @@ updates:
     directory: "/todo_list_application"
     schedule:
       interval: "weekly"
-    ignore:
-      - dependency-type: "all"
     allow:
       - dependency-type: "security"
     labels:
@@ -15,8 +13,6 @@ updates:
     directory: "/todo_list_next"
     schedule:
       interval: "weekly"
-    ignore:
-      - dependency-type: "all"
     allow:
       - dependency-type: "security"
     labels:
