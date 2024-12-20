@@ -4,7 +4,7 @@ updates:
     directory: "/todo_list_application"
     schedule:
       interval: "daily" # デバッグ # "weekly"
-      time: "16:15" # デバッグ
+      time: "16:21" # デバッグ
       timezone: "Asia/Tokyo"
 #    allow:
 #      - dependency-type: "security"
@@ -15,7 +15,7 @@ updates:
     directory: "/todo_list_next"
     schedule:
       interval: "daily" # デバッグ # "weekly"
-      time: "16:15" # デバッグ
+      time: "16:21" # デバッグ
       timezone: "Asia/Tokyo"
 #    allow:
 #      - dependency-type: "security"
