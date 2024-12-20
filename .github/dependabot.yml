@@ -17,17 +17,17 @@ updates:
 
   - package-ecosystem: "npm"
     directory: "/todo_list_view"
-    schedule:
-      interval: "never"
+    ignore:
+      - dependency-type: "all"
   - package-ecosystem: "bundler"
     directory: "/tasklog"
-    schedule:
-      interval: "never"
+    ignore:
+      - dependency-type: "all"
   - package-ecosystem: "npm"
     directory: "/tasklog"
-    schedule:
-      interval: "never"
+    ignore:
+      - dependency-type: "all"
   - package-ecosystem: "npm"
     directory: "/terraform"
-    schedule:
-      interval: "never"
+    ignore:
+      - dependency-type: "all"
