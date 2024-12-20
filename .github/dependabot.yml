@@ -4,9 +4,10 @@ updates:
     directory: "/todo_list_application"
     schedule:
       interval: "daily" # デバッグ # "weekly"
-      time: "02:20" # デバッグ
-    allow:
-      - dependency-type: "security"
+      time: "16:15" # デバッグ
+      timezone: "Asia/Tokyo"
+#    allow:
+#      - dependency-type: "security"
     labels:
       - "dependabot-security-patch"  # 自動マージ用のラベルを追加
 
@@ -14,8 +15,9 @@ updates:
     directory: "/todo_list_next"
     schedule:
       interval: "daily" # デバッグ # "weekly"
-      time: "02:20" # デバッグ
-    allow:
-      - dependency-type: "security"
+      time: "16:15" # デバッグ
+      timezone: "Asia/Tokyo"
+#    allow:
+#      - dependency-type: "security"
     labels:
       - "dependabot-security-patch"  # 自動マージ用のラベルを追加
