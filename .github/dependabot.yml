@@ -6,7 +6,6 @@ updates:
       interval: "daily"
     labels:
       - "dependabot-security-patch"  # 自動マージ用のラベルを追加
-  # TODO: 許可するバージョンアップレベルを指定できるようにしておく（運用するものはメジャーは自動アップデートでなくしておく）
 
   - package-ecosystem: "npm"
     directory: "/todo_list_next"
@@ -14,20 +13,3 @@ updates:
       interval: "daily"
     labels:
       - "dependabot-security-patch"  # 自動マージ用のラベルを追加
-
-  - package-ecosystem: "npm"
-    directory: "/todo_list_view"
-    schedule:
-      interval: "never"
-  - package-ecosystem: "bundler"
-    directory: "/tasklog"
-    schedule:
-      interval: "never"
-  - package-ecosystem: "npm"
-    directory: "/tasklog"
-    schedule:
-      interval: "never"
-  - package-ecosystem: "npm"
-    directory: "/terraform"
-    schedule:
-      interval: "never"
