@@ -3,7 +3,7 @@ updates:
   - package-ecosystem: "bundler"
     directory: "/todo_list_application"
     schedule:
-      interval: "weekly"
+      interval: "daily" # "weekly"
     allow:
       - dependency-type: "security"
     labels:
@@ -12,7 +12,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "/todo_list_next"
     schedule:
-      interval: "weekly"
+      interval: "daily" # "weekly"
     allow:
       - dependency-type: "security"
     labels:
