@@ -19,23 +19,15 @@ updates:
     directory: "/todo_list_view"
     ignore:
       - dependency-type: "all"
-    schedule:
-      interval: "monthly"
   - package-ecosystem: "bundler"
     directory: "/tasklog"
     ignore:
       - dependency-type: "all"
-    schedule:
-      interval: "monthly"
   - package-ecosystem: "npm"
     directory: "/tasklog"
     ignore:
       - dependency-type: "all"
-    schedule:
-      interval: "monthly"
   - package-ecosystem: "npm"
     directory: "/terraform"
     ignore:
       - dependency-type: "all"
-    schedule:
-      interval: "monthly"
