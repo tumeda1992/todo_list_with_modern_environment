@@ -13,8 +13,8 @@ const Home = ({ content }) => {
         {
           pids.map(pid => (
             <div key={pid}>
-              <Link 
-                href="/post/[pid]/[name]" // 見るjsファイル 
+              <Link
+                href="/post/[pid]/[name]" // 見るjsファイル
                 as={`/post/${pid}/hoge?param=k`} // パス
               >
                 Post {pid}
