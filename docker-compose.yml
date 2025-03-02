@@ -36,7 +36,7 @@ services:
 
   todo_app_next_lambda:
     container_name: todo_next_lambda
-    command: "yarn docker-compose-command" # デバッグ
+#    command: "yarn docker-compose-command" # デバッグ
     build:
       context: ./todo_list_next
       dockerfile: ./lambda/Dockerfile
