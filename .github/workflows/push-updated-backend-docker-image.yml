@@ -43,19 +43,24 @@ jobs:
         run: |
           docker pull $REGISTRY/$IMAGE_WITH_TAG || echo "No previous cache found"
 
-
       - name: Create and Use Buildx Builder
         run: docker buildx create --use
 
-      - name: Build, tag, and push Docker image
+      # - name: Build, tag, and push Docker image
+      #   run: |
+      #     docker buildx build \
+      #       --platform linux/amd64,linux/arm64 \
+      #       --cache-from=type=local,src=/tmp/.buildx-cache \
+      #       --cache-to=type=local,dest=/tmp/.buildx-cache \
+      #       --progress=plain \
+      #       -t $REGISTRY/$IMAGE_WITH_TAG ./todo_list_application \
+      #       --push
+
+      - name: Debug log (temporarily enabled)
         run: |
-          docker buildx build \
-            --platform linux/amd64,linux/arm64 \
-            --cache-from=type=local,src=/tmp/.buildx-cache \
-            --cache-to=type=local,dest=/tmp/.buildx-cache \
-            --progress=plain \
-            -t $REGISTRY/$IMAGE_WITH_TAG ./todo_list_application \
-            --push
+          echo "構築で試行錯誤したくなったら、このログと「Build, tag, and push Docker image」のコメントアウトをスイッチング"
+          echo "Docker registry: $REGISTRY"
+          echo "Image tag: $IMAGE_WITH_TAG"
 
       - name: Save Docker build cache
         uses: actions/cache@v4

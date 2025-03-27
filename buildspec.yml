@@ -17,13 +17,15 @@ phases:
       - REGISTRY_URI=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com
       - REPOSITORY_URI=${REGISTRY_URI}/${ECR_REPOSITORY}
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin ${REGISTRY_URI}
+  
   build:
     commands:
-      - echo Build started on `date`
-      - IMAGE_TAG=latest
-      - REGISTRY=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com
-      - IMAGE_WITH_TAG=${ECR_REPOSITORY}:$IMAGE_TAG
-      - docker buildx build --platform linux/amd64,linux/arm64 -t $REGISTRY/$IMAGE_WITH_TAG ./todo_list_next --push
+      - echo "(開発メモコメント)構築試行錯誤を最近してないからECR更新をコメントアウト。やるときになったらコメントアウトスイッチング"
+      # - echo Build started on `date`
+      # - IMAGE_TAG=latest
+      # - REGISTRY=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com
+      # - IMAGE_WITH_TAG=${ECR_REPOSITORY}:$IMAGE_TAG
+      # - docker buildx build --platform linux/amd64,linux/arm64 -t $REGISTRY/$IMAGE_WITH_TAG ./todo_list_next --push
 
 env:
   variables:
