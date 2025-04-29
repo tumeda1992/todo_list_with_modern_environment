@@ -1,0 +1,3 @@
+export TF_VAR_bucket_name=${TERRAFROM_STATE_S3_BUCKET}
+export TF_VAR_dynamodb_table_name=${TERRAFROM_STATE_DYNAMODB_TABLE}
+terraform apply
