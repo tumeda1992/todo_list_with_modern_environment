@@ -27,3 +27,7 @@ resource "aws_ecr_lifecycle_policy" "policy" {
     }
   )
 }
+
+output "repository_url" {
+  value       = aws_ecr_repository.repo.repository_url
+}

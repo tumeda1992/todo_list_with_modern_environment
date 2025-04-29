@@ -5,5 +5,5 @@ provider "aws" {
 module "ecr" {
   source = "../"
 
-  stage = "dev"
+  stage = "test"
 }

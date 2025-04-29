@@ -40,3 +40,14 @@ module "ecr" {
   source = "../../modules/ecr"
   stage = local.stage
 }
+
+output "ecr_repository_url" {
+  description = "ECR リポジトリの URL をモジュールから受け取る"
+  value       = module.ecr.repository_url
+}
+
+module "lambda" {
+  source = "../../modules/lambda"
+  stage = local.stage
+  ecr_repository_url = module.ecr.repository_url
+}
