@@ -39,7 +39,10 @@ function convertChunkToBuffer(chunk, encoding) {
 function createNextJsRequest(event) {
   const req = new IncomingMessage();
   req.method = event.httpMethod || (event.requestContext && event.requestContext.http && event.requestContext.http.method) || "GET";
-  req.headers = event.headers;
+  req.headers = req.headers = {
+    ...event.headers,
+    'accept-encoding': 'identity'
+  };
   req.url = event.rawPath;
   req.body = event.body ? Buffer.from(event.body) : Buffer.alloc(0);
   return req;
@@ -93,12 +96,17 @@ async function handleNextJsRequest(nextJsRequest) {
   return [enhancedResponse, chunks];
 }
 
-function convertNextJsResponseToLambdaResponse(nextJsResponse, chunks) {
+async function convertNextJsResponseToLambdaResponse(nextJsResponse, chunks) {
+  const headers = { ...nextJsResponse.headers };
+  delete headers['content-encoding'];
+  delete headers['Content-Encoding'];
+  headers['Content-Type'] = 'text/html; charset=utf-8';
+
   return {
     statusCode: nextJsResponse.statusCode,
-    headers: nextJsResponse.headers,
-    body: Buffer.concat(chunks).toString('base64'),
-    isBase64Encoded: true,
+    headers,
+    body: Buffer.concat(chunks).toString('utf-8'),
+    isBase64Encoded: false,
   };
 }
 
@@ -106,7 +114,7 @@ exports.handle = async (event, _context) => {
   try {
     const nextJsRequest = createNextJsRequest(event);
     const [nextJsResponse, chunks] = await handleNextJsRequest(nextJsRequest);
-    return convertNextJsResponseToLambdaResponse(nextJsResponse, chunks);
+    return await convertNextJsResponseToLambdaResponse(nextJsResponse, chunks);
   } catch (error) {
     console.error('Error during SSR processing:', error);
     return {
