@@ -2,16 +2,6 @@ const next = require('next');
 const { IncomingMessage, ServerResponse } = require('http');
 const { Duplex } = require('stream');
 
-class DummySocket extends Duplex {
-  _read(size) { }
-  _write(chunk, encoding, callback) { callback(); }
-  setTimeout(msecs, callback) { if (callback) callback(); }
-  setNoDelay(noDelay) { }
-  setKeepAlive(enable, initialDelay) { }
-  address() { return { address: '127.0.0.1', family: 'IPv4', port: 0 }; }
-  destroy(error) { this.push(null); this.emit('close', error); }
-}
-
 const app = next({ dev: false });
 let _nextJsRequestHandler = null;
 async function getNextJsRequestHandler() {
@@ -39,13 +29,20 @@ function convertChunkToBuffer(chunk, encoding) {
 function createNextJsRequest(event) {
   const req = new IncomingMessage();
   req.method = event.httpMethod || (event.requestContext && event.requestContext.http && event.requestContext.http.method) || "GET";
-  req.headers = req.headers = {
-    ...event.headers,
-    'accept-encoding': 'identity'
-  };
+  req.headers = event.headers;
   req.url = event.rawPath;
   req.body = event.body ? Buffer.from(event.body) : Buffer.alloc(0);
   return req;
+}
+
+class DummySocket extends Duplex {
+  _read(size) { }
+  _write(chunk, encoding, callback) { callback(); }
+  setTimeout(msecs, callback) { if (callback) callback(); }
+  setNoDelay(noDelay) { }
+  setKeepAlive(enable, initialDelay) { }
+  address() { return { address: '127.0.0.1', family: 'IPv4', port: 0 }; }
+  destroy(error) { this.push(null); this.emit('close', error); }
 }
 
 function setupResponseCapture(nextJsRequest) {
