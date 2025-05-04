@@ -15,10 +15,18 @@ module "dev" {
   ecr_registry_name = var.ecr_registry_name
 }
 
-output "root_url" {
-  value = module.dev.root_url
+# output "root_url" {
+#   value = module.dev.root_url
+# }
+#
+# output "frontend_url" {
+#   value = "${module.dev.root_url}/api/healthcheck"
+# }
+
+output "lambda_function_arn" {
+  value = module.dev.lambda_function_arn
 }
 
-output "frontend_url" {
-  value = "${module.dev.root_url}/api/healthcheck"
+output "lambda_invoke_arn" {
+  value = module.dev.lambda_invoke_arn
 }

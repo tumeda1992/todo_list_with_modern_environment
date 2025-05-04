@@ -27,13 +27,13 @@ resource "aws_lambda_function" "this" {
   package_type  = "Image"
   image_uri     = "${var.ecr_repository_url}:latest"
   role          = aws_iam_role.exec.arn
+  architectures  = ["arm64"]
 
   memory_size = 1024
   timeout     = 30
 
   environment {
     variables = {
-      AWS_LWA_INVOKE_MODE   = "response_stream"
       NEXT_PUBLIC_BACKEND_API_ORIGIN    = "https://7altwwfp36i5lr7hqwzicxhbbi0iaurn.lambda-url.ap-northeast-1.on.aws/api"
       PORT   = 8080
     }
@@ -43,6 +43,7 @@ resource "aws_lambda_function" "this" {
 resource "aws_lambda_function_url" "this" {
   function_name       = aws_lambda_function.this.function_name
   authorization_type  = "NONE"
+  invoke_mode        = "RESPONSE_STREAM"
 }
 
 output "lambda_function_arn" {
