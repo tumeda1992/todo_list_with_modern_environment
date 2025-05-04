@@ -47,10 +47,9 @@ module "lambda" {
   ecr_repository_url = module.ecr.repository_url
 }
 
-output "lambda_function_arn" {
-  value = module.lambda.lambda_function_arn
-}
+module "apigateway" {
+  source = "../../modules/apigateway"
 
-output "lambda_invoke_arn" {
-  value = module.lambda.lambda_invoke_arn
+  stage = local.stage
+  lambda_function_arn = module.lambda.lambda_function_arn
 }
