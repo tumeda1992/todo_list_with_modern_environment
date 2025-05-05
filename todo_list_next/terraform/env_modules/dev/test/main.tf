@@ -15,10 +15,6 @@ module "dev" {
 #   ecr_registry_name = var.ecr_registry_name
 }
 
-# output "root_url" {
-#   value = module.dev.root_url
-# }
-#
-# output "frontend_url" {
-#   value = "${module.dev.root_url}/api/healthcheck"
-# }
+output "api_endpoint" {
+  value = module.dev.api_endpoint
+}

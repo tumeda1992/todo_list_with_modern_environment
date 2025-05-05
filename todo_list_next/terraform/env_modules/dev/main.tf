@@ -53,3 +53,7 @@ module "apigateway" {
   stage = local.stage
   lambda_function_arn = module.lambda.lambda_function_arn
 }
+
+output "api_endpoint" {
+  value = module.apigateway.api_endpoint
+}
