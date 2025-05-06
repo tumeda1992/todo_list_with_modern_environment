@@ -6,39 +6,22 @@ provider "aws" {
 }
 
 provider "aws" {
-  alias  = "va"     # CloudFront 用の us-east-1 プロバイダー
+  alias  = "us-east-1"
   region = "us-east-1"
-}
-
-locals {
-  custom_domain = "todolist-frontend-cdn-by-terraform.${var.route53_name}"
-}
-
-module "cert" {
-  source = "../cert"
-  providers = { aws = aws.va }
-
-  custom_domain = local.custom_domain
-  route53_zone_id = var.route53_id
 }
 
 # 起動・停止ともに5分くらいかかる
 module "cloudfront" {
   source = "../"
 
+  providers = {
+    aws = aws,
+    aws.us-east-1 = aws.us-east-1
+  }
+
 #   stage = "test"
   api_endpoint = "https://acyidtk5sg.execute-api.ap-northeast-1.amazonaws.com"
-  certificate_arn = module.cert.certificate_arn
-  custom_domain = local.custom_domain
-}
-
-module "dns" {
-  source = "../dns"
-
-  custom_domain = local.custom_domain
-  route53_zone_id = var.route53_id
-  cf_domain_name = module.cloudfront.cloudfront_domain_name
-  cf_zone_id = module.cloudfront.cloudfront_hosted_zone_id
-
-#   depends_on = [module.cert]
+  custom_domain = "todolist-frontend-cdn-by-terraform.${var.route53_name}"
+  route53_id = var.route53_id
+  route53_name = var.route53_name
 }

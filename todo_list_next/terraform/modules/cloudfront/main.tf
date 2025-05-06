@@ -1,6 +1,26 @@
 variable "api_endpoint" { type = string }
 variable "custom_domain" { type = string }
-variable "certificate_arn" { type = string }
+variable "route53_id" { type = string }
+variable "route53_name" { type = string }
+
+# NOTE: このモジュールを利用する側で、cert用にus-east-1のプロバイダーをエイリアスとして渡してくる必要がある
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 4.0"
+    }
+  }
+}
+
+module "cert" {
+  source = "./cert"
+  providers = { aws = aws.us-east-1 }
+
+  custom_domain = var.custom_domain
+  route53_zone_id = var.route53_id
+}
 
 resource "aws_cloudfront_distribution" "cf" {
   origin {
@@ -48,18 +68,22 @@ resource "aws_cloudfront_distribution" "cf" {
   }
 
   viewer_certificate {
-    acm_certificate_arn      = var.certificate_arn
+    acm_certificate_arn      = module.cert.certificate_arn
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.2_2019"
   }
 
   aliases = [var.custom_domain]
+  depends_on = [module.cert]
 }
 
-output "cloudfront_domain_name" {
-  value       = aws_cloudfront_distribution.cf.domain_name
-}
+module "dns" {
+  source = "./dns"
 
-output "cloudfront_hosted_zone_id" {
-  value       = aws_cloudfront_distribution.cf.hosted_zone_id
+  custom_domain = var.custom_domain
+  route53_zone_id = var.route53_id
+  cf_domain_name = aws_cloudfront_distribution.cf.domain_name
+  cf_zone_id = aws_cloudfront_distribution.cf.hosted_zone_id
+
+  depends_on = [module.cert]
 }
