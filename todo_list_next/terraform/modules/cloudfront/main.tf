@@ -1,9 +1,6 @@
-// modules/cloudfront/main.tf
-
-variable "api_endpoint" {
-  description = "API Gateway のエンドポイント URL"
-  type        = string
-}
+variable "api_endpoint" { type = string }
+variable "custom_domain" { type = string }
+variable "certificate_arn" { type = string }
 
 resource "aws_cloudfront_distribution" "cf" {
   origin {
@@ -50,14 +47,19 @@ resource "aws_cloudfront_distribution" "cf" {
     }
   }
 
-  # カスタムドメインをまだ設定しないフェーズなので、
-  # CloudFront のデフォルト証明書（*.cloudfront.net）を利用
   viewer_certificate {
-    cloudfront_default_certificate = true
+    acm_certificate_arn      = var.certificate_arn
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1.2_2019"
   }
+
+  aliases = [var.custom_domain]
 }
 
 output "cloudfront_domain_name" {
-  description = "この CloudFront ディストリビューションのドメイン名"
   value       = aws_cloudfront_distribution.cf.domain_name
+}
+
+output "cloudfront_hosted_zone_id" {
+  value       = aws_cloudfront_distribution.cf.hosted_zone_id
 }
