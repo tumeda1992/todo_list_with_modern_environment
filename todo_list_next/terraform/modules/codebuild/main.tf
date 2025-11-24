@@ -1,15 +1,20 @@
 variable "stage" { type = string }
+variable "aws_account_id" { type = string }
 variable "ecr_repository_url" { type = string }
 variable "lambda_function_name" { type = string }
 variable "codebuild_artifact_s3_bucket" { type = string }
-variable "aws_code_connection_github_arn" { type = string }
+variable "aws_code_connection_id_to_github" { type = string }
 variable "branch" {
   type = string
   default = "master"
 }
 
+locals {
+  aws_code_connection_github_arn = "arn:aws:codeconnections:ap-northeast-1:${var.aws_account_id}:connection/${var.aws_code_connection_id_to_github}"
+}
+
 resource "aws_iam_role" "codebuild_role" {
-  name = "todolist-frontend-codebuild-role"
+  name = "todolist-frontend-${var.stage}-codebuild-role"
   assume_role_policy = jsonencode({
     Version   = "2012-10-17",
     Statement = [{
@@ -86,7 +91,7 @@ resource "aws_codepipeline" "pipeline" {
       configuration = {
         FullRepositoryId     = "tumeda1992/todo_list_with_modern_environment"
         BranchName           = var.branch
-        ConnectionArn        = var.aws_code_connection_github_arn
+        ConnectionArn        = local.aws_code_connection_github_arn
         OutputArtifactFormat = "CODE_ZIP"
       }
 
@@ -115,8 +120,7 @@ resource "aws_codepipeline" "pipeline" {
 }
 
 resource "aws_iam_role" "codepipeline_role" {
-  # TODO: stageを付与したい
-  name = "codepipeline_role"
+  name = "codepipeline-${var.stage}_role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -132,7 +136,7 @@ resource "aws_iam_role" "codepipeline_role" {
 
 # CodePipeline の操作に必要な権限ポリシーを追加
 resource "aws_iam_policy" "codepipeline_policy" {
-  name        = "todolist_frontend_codepipeline_policy"
+  name        = "todolist_frontend_codepipeline-${var.stage}_policy"
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -175,7 +179,7 @@ resource "aws_iam_policy" "codepipeline_policy" {
           "codeconnections:UseConnection"
         ]
         Effect   = "Allow"
-        Resource = var.aws_code_connection_github_arn
+        Resource = local.aws_code_connection_github_arn
       }
     ]
   })
@@ -191,7 +195,7 @@ resource "aws_iam_role_policy" "codebuild_extra" {
   # TODO: 名前変えたい
   # TODO: stageごとにしたい
   # TODO: 小分けのロールにしたい
-  name = "todolist-frontend-codebuild-extra"
+  name = "todolist-frontend-codebuild-${var.stage}-extra-policy"
   role = aws_iam_role.codebuild_role.id
 
   policy = jsonencode({
