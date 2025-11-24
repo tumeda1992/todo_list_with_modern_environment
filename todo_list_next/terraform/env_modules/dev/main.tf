@@ -56,8 +56,8 @@ module "cloudfront" {
   route53_name = var.route53_name
 }
 
-module "codebuild" {
-  source = "../../modules/codebuild"
+module "cicd" {
+  source = "../../modules/cicd"
 
   stage = local.stage
   aws_account_id = var.aws_account_id
