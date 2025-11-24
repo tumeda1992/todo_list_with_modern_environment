@@ -7,3 +7,7 @@ module "ecr" {
 
   stage = "test"
 }
+
+output "repository_url" {
+  value = module.ecr.repository_url
+}
