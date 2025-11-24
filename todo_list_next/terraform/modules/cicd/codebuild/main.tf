@@ -30,7 +30,7 @@ resource "aws_codebuild_project" "codebuild_project" {
 
   source {
     type      = "CODEPIPELINE"
-    buildspec = "todo_list_next/terraform/modules/codebuild/buildspec.yml"
+    buildspec = "todo_list_next/terraform/modules/cicd/codebuild/buildspec.yml"
   }
 
   artifacts {
